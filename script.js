@@ -1,8 +1,10 @@
 (() => {
     'use strict';
 
+    const isFluidMobile = window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(max-width: 820px)').matches || /Mobi|Android/i.test(navigator.userAgent);
     const canvas = document.querySelector('.fluid-layer');
     if (!canvas) return;
+    if (isFluidMobile) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     resizeCanvas();
@@ -1744,49 +1746,72 @@ function hashCode (s) {
 
   const bg = document.querySelector('.global-bg');
   if (bg && !reducedMotion) {
-    let t = 0;
-    let lastY = window.scrollY;
-    let vy = 0;
-    let decay;
+    if (isMobile) {
+      const applyScrollGradient = () => {
+        const y = window.scrollY;
+        const maxShift = 24;
+        const shift = Math.max(-maxShift, Math.min(maxShift, y * 0.05));
+        const drift = Math.sin(y * 0.004) * 6;
+        bg.style.setProperty('--bg-x', drift.toFixed(2) + 'px');
+        bg.style.setProperty('--bg-y', shift.toFixed(2) + 'px');
+        bg.style.setProperty('--bg-rot', (drift * 0.02).toFixed(3) + 'deg');
+        bg.style.setProperty('--bg-scale', '1');
+        const sx = 50 + Math.sin(y * 0.002) * 14;
+        const sy = 50 + Math.cos(y * 0.002) * 12;
+        const sx2 = 32 + Math.cos(y * 0.0016) * 16;
+        const sy2 = 70 + Math.sin(y * 0.0018) * 14;
+        bg.style.setProperty('--sparkle-x', sx.toFixed(2) + '%');
+        bg.style.setProperty('--sparkle-y', sy.toFixed(2) + '%');
+        bg.style.setProperty('--sparkle2-x', sx2.toFixed(2) + '%');
+        bg.style.setProperty('--sparkle2-y', sy2.toFixed(2) + '%');
+      };
+      applyScrollGradient();
+      window.addEventListener('scroll', applyScrollGradient, { passive: true });
+    } else {
+      let t = 0;
+      let lastY = window.scrollY;
+      let vy = 0;
+      let decay;
 
-    const tick = () => {
-      t += isMobile ? 0.0016 : 0.0025;
-      const x = Math.sin(t) * 8;
-      const y = Math.cos(t * 0.8) * 6;
-      const rot = Math.sin(t * 0.4) * 0.4;
-      const scl = 1 + Math.sin(t * 0.3) * 0.01;
+      const tick = () => {
+        t += 0.0025;
+        const x = Math.sin(t) * 8;
+        const y = Math.cos(t * 0.8) * 6;
+        const rot = Math.sin(t * 0.4) * 0.4;
+        const scl = 1 + Math.sin(t * 0.3) * 0.01;
 
-      bg.style.setProperty('--bg-x', x.toFixed(2) + 'px');
-      bg.style.setProperty('--bg-y', (y + vy * 0.25).toFixed(2) + 'px');
-      bg.style.setProperty('--bg-rot', rot.toFixed(3) + 'deg');
-      bg.style.setProperty('--bg-scale', scl.toFixed(3));
+        bg.style.setProperty('--bg-x', x.toFixed(2) + 'px');
+        bg.style.setProperty('--bg-y', (y + vy * 0.25).toFixed(2) + 'px');
+        bg.style.setProperty('--bg-rot', rot.toFixed(3) + 'deg');
+        bg.style.setProperty('--bg-scale', scl.toFixed(3));
 
-      const sx = 50 + Math.sin(t * 0.6) * 25;
-      const sy = 50 + Math.cos(t * 0.5) * 22;
-      const sx2 = 30 + Math.cos(t * 0.45) * 28;
-      const sy2 = 70 + Math.sin(t * 0.35) * 26;
-      bg.style.setProperty('--sparkle-x', sx.toFixed(2) + '%');
-      bg.style.setProperty('--sparkle-y', sy.toFixed(2) + '%');
-      bg.style.setProperty('--sparkle2-x', sx2.toFixed(2) + '%');
-      bg.style.setProperty('--sparkle2-y', sy2.toFixed(2) + '%');
+        const sx = 50 + Math.sin(t * 0.6) * 25;
+        const sy = 50 + Math.cos(t * 0.5) * 22;
+        const sx2 = 30 + Math.cos(t * 0.45) * 28;
+        const sy2 = 70 + Math.sin(t * 0.35) * 26;
+        bg.style.setProperty('--sparkle-x', sx.toFixed(2) + '%');
+        bg.style.setProperty('--sparkle-y', sy.toFixed(2) + '%');
+        bg.style.setProperty('--sparkle2-x', sx2.toFixed(2) + '%');
+        bg.style.setProperty('--sparkle2-y', sy2.toFixed(2) + '%');
+
+        requestAnimationFrame(tick);
+      };
 
       requestAnimationFrame(tick);
-    };
 
-    requestAnimationFrame(tick);
+      const onScroll = () => {
+        const y = window.scrollY;
+        const dy = y - lastY;
+        lastY = y;
+        vy = Math.max(-24, Math.min(24, vy + dy * 0.25));
+        clearTimeout(decay);
+        decay = setTimeout(() => {
+          vy = 0;
+        }, 140);
+      };
 
-    const onScroll = () => {
-      const y = window.scrollY;
-      const dy = y - lastY;
-      lastY = y;
-      vy = Math.max(-24, Math.min(24, vy + dy * 0.25));
-      clearTimeout(decay);
-      decay = setTimeout(() => {
-        vy = 0;
-      }, 140);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
   }
 
   const viewer = document.getElementById('spline');

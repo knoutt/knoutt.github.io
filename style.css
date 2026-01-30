@@ -405,6 +405,7 @@ spline-viewer #logo{ display:none !important; }
 .inline-link:hover{ color: var(--sea-600) }
 
 .page-hero{ padding-top: calc(var(--space-8) + 52px) }
+body.projects .page-hero{ padding-top: calc(var(--space-8) + 84px) }
 .page-hero .content{ padding: var(--space-7) }
 .page-title{ font-size:clamp(2.4rem, 5vw, 3.6rem); margin:0 0 .4rem }
 .page-sub{ font-size:1.1rem; color:var(--text-dim); margin:0 }
@@ -651,6 +652,10 @@ spline-viewer #logo{ display:none !important; }
   transition: transform .2s ease, box-shadow .25s ease, filter .25s ease;
 }
 .btn:hover{ transform: translateY(-2px); box-shadow:0 16px 30px rgba(143,63,20,.26); filter:saturate(110%) }
+.btn:visited,
+.btn:active,
+.btn:focus,
+.btn:focus-visible{ color:#fff !important; }
 .site-footer{
   padding:36px 0 42px;
   color:var(--text-dim);
@@ -684,17 +689,17 @@ spline-viewer #logo{ display:none !important; }
 }
 .lightbox-content{
   position:relative;
-  width:min(92vw, 1100px);
-  max-height:80vh;
+  width:min(92vw, 1100px, calc(80vh * 4 / 3));
   display:flex;
   align-items:center;
   justify-content:center;
+  aspect-ratio: 4 / 3;
 }
 .lightbox img{
   width:100%;
-  height:auto;
+  height:100%;
   max-height:80vh;
-  object-fit:contain;
+  object-fit:cover;
   border-radius:22px;
   border:1px solid rgba(255,255,255,.8);
   background: rgba(255,255,255,.25);
@@ -744,6 +749,12 @@ spline-viewer #logo{ display:none !important; }
 .is-mobile .hero-content{ position:relative; z-index:2; }
 .is-mobile .hero-blur{ display:none; }
 .is-mobile .chevron{ display:none; }
+.is-mobile .fluid-layer,
+.is-mobile .fluid-frost{ display:none; }
+.is-mobile .global-bg{
+  animation:none;
+  filter: saturate(108%);
+}
 
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important }
@@ -757,6 +768,8 @@ spline-viewer #logo{ display:none !important; }
     --space-8:3.4rem;
     --hero-h: clamp(420px, 75vh, 620px);
   }
+  html{ scroll-padding-top: 120px }
+  .page-hero{ padding-top: calc(var(--space-8) + 96px) }
   .nav{ flex-wrap:wrap; gap:.65rem }
   nav{ width:100%; display:flex; flex-wrap:wrap; justify-content:flex-start }
   nav a{ margin-left:0; margin-right:.4rem }
@@ -787,11 +800,14 @@ spline-viewer #logo{ display:none !important; }
 }
 @media (max-width: 640px){
   .nav{ flex-wrap:wrap; gap:.6rem }
-  nav a{ margin-left:.4rem }
+  nav a{ margin-left:0; margin-right:.4rem }
+  .brand span{ display:none }
+  .brand{ gap:.4rem }
   .all-projects-cta{ flex-direction:column; align-items:flex-start }
   .responsibilities{ grid-template-columns: 1fr }
   .site-footer .footer-content{ justify-content:flex-start }
   .site-footer .footer-cta{ margin-left:0 }
+  .page-hero{ padding-top: calc(var(--space-8) + 112px) }
 }
 
 @media (hover: none){
