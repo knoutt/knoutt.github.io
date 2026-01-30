@@ -142,7 +142,7 @@ h1,h2,h3,.brand{font-family:var(--font-display)}
 .container{ width:min(1180px,92vw); margin-inline:auto }
 section{ padding-block: var(--space-7) }
 h2.section-title{ font-size:clamp(2rem, 3.8vw, 2.9rem); margin:0; letter-spacing:.2px }
-.section-title + *{ margin-top: 8px }
+.section-title + *{ margin-top: 18px }
 #experience, #contact{ padding-block: var(--space-6) }
 #experience .section-title, #contact .section-title{ margin-bottom:0 }
 #experience .experience{ gap:22px }
@@ -171,6 +171,11 @@ header{
   display:block;
   line-height:1;
 }
+.nav-links{
+  display:flex;
+  align-items:center;
+  margin-left:auto;
+}
 nav a{
   margin-left:1rem; padding:.45rem .7rem;
   border-radius:999px; font-weight:700; color:var(--text-100);
@@ -193,6 +198,27 @@ nav a.cta:visited{ color:#fff; }
 .cta:hover{
   background:linear-gradient(180deg, var(--ember-400), var(--ember-600));
   box-shadow:0 16px 28px rgba(143,63,20,.32);
+}
+.nav-toggle{
+  display:none;
+  border:0;
+  background:rgba(255,255,255,.7);
+  border-radius:999px;
+  width:44px;
+  height:44px;
+  padding:10px;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  box-shadow:0 10px 20px rgba(8,40,52,.12);
+  cursor:pointer;
+}
+.nav-toggle span{
+  display:block;
+  width:18px;
+  height:2px;
+  background:var(--text-100);
+  border-radius:999px;
 }
 
 .hero{ position:relative; padding-block:0; }
@@ -798,8 +824,31 @@ body.projects .page-hero{ padding-top: calc(var(--space-8) + 84px) }
   .responsibilities{ grid-template-columns: 1fr 1fr }
   .projects-grid{ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 }
+body.nav-compact .nav{ flex-wrap:wrap; gap:.6rem }
+body.nav-compact .nav-links{
+  width:100%;
+  order:3;
+  flex-direction:column;
+  align-items:flex-start;
+  margin-top:0;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transform: translateY(-6px);
+  transition: max-height .3s ease, opacity .25s ease, transform .3s ease;
+}
+body.nav-compact .nav-links a{ margin-left:0; margin-right:0; width:100% }
+body.nav-compact .nav-toggle{ display:flex; order:2; margin-left:auto }
+body.nav-compact.nav-open .nav-links{
+  max-height:240px;
+  opacity:1;
+  transform: translateY(0);
+  margin-top:.4rem;
+}
+body.nav-compact.nav-open header{ box-shadow: 0 16px 28px rgba(8,40,52,.16); }
+
 @media (max-width: 640px){
-  .nav{ flex-wrap:wrap; gap:.6rem }
+  .nav{ gap:.6rem }
   nav a{ margin-left:0; margin-right:.4rem }
   .brand span{ display:none }
   .brand{ gap:.4rem }

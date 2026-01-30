@@ -1814,6 +1814,44 @@ function hashCode (s) {
     }
   }
 
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navContainer = document.querySelector('.nav');
+  const navBrand = navContainer ? navContainer.querySelector('.brand') : null;
+  const updateNavCompact = () => {
+    if (!navContainer || !navBrand || !navLinks) return;
+    document.body.classList.remove('nav-compact');
+    const brandTop = navBrand.getBoundingClientRect().top;
+    const linksTop = navLinks.getBoundingClientRect().top;
+    const needsCompact = linksTop - brandTop > 4;
+    if (needsCompact) {
+      document.body.classList.add('nav-compact');
+    } else {
+      document.body.classList.remove('nav-open');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    }
+  };
+  if (navToggle && navLinks) {
+    const closeNav = () => {
+      document.body.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    };
+    navToggle.addEventListener('click', () => {
+      const open = document.body.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeNav);
+    });
+    document.addEventListener('click', event => {
+      if (!document.body.classList.contains('nav-open')) return;
+      if (navToggle.contains(event.target) || navLinks.contains(event.target)) return;
+      closeNav();
+    });
+  }
+  updateNavCompact();
+  window.addEventListener('resize', updateNavCompact);
+
   const viewer = document.getElementById('spline');
   const removeSplineLogo = () => {
     if (!viewer) return;
