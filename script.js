@@ -768,7 +768,7 @@ let bloomFramebuffers = [];
 let sunrays;
 let sunraysTemp;
 
-let ditheringTexture = createTextureAsync('assets/LDR_LLL1_0.png');
+let ditheringTexture = createTextureAsync('assets/LDR_LLL1_0.webp');
 
 const blurProgram            = new Program(blurVertexShader, blurShader);
 const copyProgram            = new Program(baseVertexShader, copyShader);
@@ -1541,7 +1541,7 @@ function hashCode (s) {
     ioTargets.forEach(el => el.classList.add('visible'));
   }
 
-  ['assets/VC2.png', 'assets/VC3.png', 'assets/FM2.png', 'assets/FM3.png'].forEach(src => {
+  ['assets/VC2.webp', 'assets/VC3.webp', 'assets/FM2.webp', 'assets/FM3.webp'].forEach(src => {
     const img = new Image();
     img.src = src;
   });
@@ -1838,3 +1838,4 @@ function hashCode (s) {
     window.addEventListener('load', removeSplineLogo);
   }
 })();
+
