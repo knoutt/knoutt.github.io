@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thomas Knout - Portfolio</title>
+<meta name="description" content="Mechanical Engineering Portfolio of Thomas Knout">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body class="home">
+<div class="global-bg" aria-hidden="true"></div>
+<canvas class="fluid-layer" aria-hidden="true"></canvas>
+<div class="fluid-frost" aria-hidden="true"></div>
+
+<header role="banner" aria-label="Top navigation">
+  <div class="container nav">
+    <div class="brand">
+      <img class="brand-icon" src="assets/TK.svg" alt="" aria-hidden="true">
+      <span>Thomas Knout</span>
+    </div>
+    <nav>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="projects.html">Projects</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="intro-heading">
+    <div class="stage">
+      <div class="hero-canvas" aria-hidden="true">
+        <spline-viewer id="spline" loading-anim-type="spinner-small-light" url="assets/splinescene.splinecode?v=20260124">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAGCAYAAACij5zfAAADKklEQVR4AQCBAH7/AM93G3LOdxt7zHccjMl2HKLGdR28wnUe1710H/C5dCH/tXQi/7F0JP+udSb/rHYo/6x4Kv+sei3/rXwu/69/MPiygTHytoQw77qFL/C9hi30wYYp+8SGJP/HhB7/yYEX/8p+EP/Legj/y3UA/8pxAP/JbQD/yWoA+chnAPTIZgDyAIEAfv8A1XccbNR3HHXSdxyF0HYdnM12HrbJdiDRxnYh6sJ2I/+/diX/vHYn/7p3Kf+4eSz/uHou/7l9MP+6fzL7vYEz8sGENOvFhjTpyYgz6s6JMe7Tii7114op/NuJJP/ehx7/4IQX/+KBEP/jfQn/5HoC/+R3AP3kdAD35HIA8+RxAPAAgQB+/wDQdhtxz3Ybes52HIvMdx2hyncfu8h3IdbFdyPwwncl/8B4J/++eSr/vHos/7x7Lv+8fDD/vX4y/8CAM//DgjT1x4Q178yGNOzRiDPt14oy8d2LL/fjiyv+6Isn/+2KIv/yiRz/9ocW//mFEf/7ggv//YAG//5/Avz/fQD4/30A9QCBAH7/ALN0GHOydRh8snUZjbB1G6Svdh2+rXYf2qx3IfOqdyT/qHgm/6d4KP+meSr/pXks/6Z6Lf+ney7/qnwu/619Lvmxfi7yt38t7r2AK+7DginyyoIm+NGDI//YhB//34Qb/+WDF//rgxL/8IIO//SBCf/3gAb/+n8D/Pt+Afj8fgD1AIEAfv8AhXITZoVyFG+FcxWAhHMXmIN0GbOCdBvPgXUe6n91IP9+dSL/fXUj/3x1JP97dCX/fHQl/31zJf9/cyT/gnMj9YZyIe6Lcx/rkXMc65dzGu6fdBb0p3QT+q91EP+2dQz/vnUI/8V2BP/LdgD/0XUA/9V1APzZdQD323UA8tx1APABgQB+/wBjcBBbYnARZGJxEnVicRSOYXIWqmByGMdfcxrjXXMc+lxyHv9bch//WnEf/1lwH/9Zbh//Wm0d/1tsHP9eahn1YmkX72ZpFOtsaBHsc2gN73poCvWCaAb8i2kC/5NpAP+bagD/o2oA/6pqAP+wawD/tWsA/rlrAPi8awD0vWsA8s9Qo2hj/5+wAAAAAElFTkSuQmCC" alt="Spline preview" style="width: 100%; height: 100%;">
+        </spline-viewer>
+      </div>
+      <div class="hero-blur" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <div class="hero-card glass liquid">
+          <h1 class="hero-title" id="intro-heading">Thomas Knout</h1>
+          <p class="hero-sub">Mechanical Engineering Student</p>
+          <div class="hero-actions">
+            <a class="btn" href="#projects">See my work</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="chevron" id="chevron" aria-label="Scroll to About" aria-controls="about">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-title">
+    <div class="container">
+      <h2 class="section-title" id="about-title">About</h2>
+      <div class="glass liquid content">
+        <p class="lead max-65ch">
+          Hi, I'm <strong>Thomas Knout</strong>, a Mechanical Engineering student with interests in automotive, technology, and aerospace. I enjoy building practical solutions to everyday problems and taking on creative challenges that help me learn and grow.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <h2 class="section-title" id="projects-title">Highlighted Projects</h2>
+
+      <div class="projects">
+        <article class="project visible" data-io aria-labelledby="fieldmesh-title" id="project-fieldmesh">
+          <div class="box glass liquid media">
+            <div class="media-inner" id="media-tilt-fieldmesh">
+              <img src="assets/FM1.png" alt="FieldMesh hub and mesh node hero image" data-main loading="lazy" decoding="async" aria-live="polite">
+            </div>
+          </div>
+
+          <div class="box glass liquid text">
+            <div class="project-body">
+              <h3 id="fieldmesh-title">FieldMesh - Rapid-Deploy Mesh Communications Hub</h3>
+              <p class="desc" id="fieldmesh-desc" data-default="FieldMesh is a compact, self-contained mesh communications and sensing system that operates fully offline. It combines low-power long-range radios with a local web dashboard so nearby devices can view, relay, and visualize data without external infrastructure.">
+                FieldMesh is a compact, self-contained mesh communications and sensing system that operates fully offline. It combines low-power long-range radios with a local web dashboard so nearby devices can view, relay, and visualize data without external infrastructure.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="thumbs" role="list" aria-label="FieldMesh images">
+                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View FieldMesh hardware overview" data-blurb="Mesh nodes are LilyGO T-Beam units (ESP32 + LoRa + GPS) running Meshtastic, acting as both data sources and relays. A Raspberry Pi Zero 2 W hub connects to a T-Beam over USB and serves a local Wi-Fi dashboard that works in any browser with no internet required.">
+                  <img src="assets/FM2.png" alt="">
+                </button>
+                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View FieldMesh software architecture" data-blurb="A single FastAPI service on the Pi Zero bridges the Meshtastic radio to an offline web dashboard. It normalizes packets, keeps in-memory node state with optional SQLite history, and streams live updates via SSE with simple local auth.">
+                  <img src="assets/FM3.png" alt="">
+                </button>
+              </div>
+
+              <p class="swap-note">Hover to preview - click to lock</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="project visible" data-io aria-labelledby="p1-title" id="project-lianli">
+          <div class="box glass liquid media">
+            <div class="media-inner" id="media-tilt-1">
+              <img src="assets/VCHero.png" alt="Lian-Li O11 Vision compact grommet cover and RTX 5090 custom cooler - hero image" data-main loading="lazy" decoding="async" aria-live="polite">
+            </div>
+          </div>
+
+          <div class="box glass liquid text">
+            <div class="project-body">
+              <h3 id="p1-title">Lian-Li O11 Vision Compact Grommet Cover &amp; RTX 5090 Custom Cooler</h3>
+              <p class="desc" id="p1-desc" data-default="This project focused on enhancing the aesthetics of my PC, particularly focused on covering up some features I did not want to see. The redesigned grommet cover and GPU shroud were reverse engineered based on the original part, before I redesigned them to remove the logo-heavy styling and better match the overall vibe of the build.">
+                This project focused on enhancing the aesthetics of my PC, particularly focused on covering up some features I did not want to see. The redesigned grommet cover and GPU shroud were reverse engineered based on the original part, before I redesigned them to remove the logo-heavy styling and better match the overall vibe of the build.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="thumbs" role="list" aria-label="Alternate images">
+                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View grommet cover detail" data-blurb="The O11 Vision has a large unused void above the motherboard. I designed a sculpted cover to occupy that gap and add visual interest. The part ties into existing geometry, hides cable runs, and turns empty space into clean, purposeful eye candy.">
+                  <img src="assets/VC2.png" alt="">
+                </button>
+                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View GPU shroud detail" data-blurb="The GPU shipped with a loud, angular paint job and no RGB. I modeled and printed a snug ABS shroud to mask the stock styling and integrated a channel for an LED strip, giving the card a clean look and controllable lighting.">
+                  <img src="assets/VC3.png" alt="">
+                </button>
+              </div>
+
+              <p class="swap-note">Hover to preview - click to lock</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="glass liquid all-projects-cta" aria-label="Full projects link">
+        <p class="lead">See all projects here.</p>
+        <a class="btn" href="projects.html">View full project archive</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-title">
+    <div class="container">
+      <h2 class="section-title" id="exp-title">Experience</h2>
+
+      <div class="experience">
+        <section class="company-block" role="group" aria-labelledby="bmw-title">
+          <div class="company-head">
+            <div class="logo" role="img" aria-label="BMW Group">
+              <img class="company-logo" src="assets/688957e31eb1aca6ac8c761e_BmwLogo.avif" alt="BMW logo">
+            </div>
+            <div class="meta">
+              <div class="name" id="bmw-title">BMW Group Canada</div>
+              <div class="role">Quality &amp; Technical Engineering Intern</div>
+            </div>
+          </div>
+          <div class="responsibilities">
+            <div class="resp-card">
+              <h4>Testing</h4>
+              <ul>
+                <li>Vehicle test-fitments &amp; software validations</li>
+                <li>Special-tool inventories; equipment calibration</li>
+              </ul>
+            </div>
+            <div class="resp-card">
+              <h4>Data &amp; Metrics</h4>
+              <ul>
+                <li>Compiled periodic service-trend KPIs</li>
+                <li>Analyzed retailer feedback for process improvements</li>
+              </ul>
+            </div>
+            <div class="resp-card">
+              <h4>Service Publications</h4>
+              <ul>
+                <li>Reviewed and updated technical bulletins</li>
+                <li>Prepared reports for engineering, legal &amp; police</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="company-block" role="group" aria-labelledby="dp-title">
+          <div class="company-head">
+            <div class="logo" role="img" aria-label="Diversified Power Inc.">
+              <img class="company-logo" src="assets/68a71869e90ad3289237b422_DPsquare.avif" alt="Diversified Power logo">
+            </div>
+            <div class="meta">
+              <div class="name" id="dp-title">Diversified Power Inc.</div>
+              <div class="role">Special Project Lead</div>
+            </div>
+          </div>
+          <div class="responsibilities">
+            <div class="resp-card">
+              <h4>Tech Strategy &amp; CDAP</h4>
+              <ul>
+                <li>Led CDAP adoption; modernized workflows</li>
+                <li>Roadmapped technology with business goals</li>
+              </ul>
+            </div>
+            <div class="resp-card">
+              <h4>ERP Modernization</h4>
+              <ul>
+                <li>Fit-gap analysis -&gt; Odoo selection</li>
+                <li>Implementation: data migration, testing, training</li>
+              </ul>
+            </div>
+            <div class="resp-card">
+              <h4>Service Publications</h4>
+              <ul>
+                <li>Launched rental software; digitized inventory</li>
+                <li>Created internal documentation for processes</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <h2 class="section-title" id="contact-title">Contact</h2>
+      <div class="glass liquid content">
+        <p class="lead max-65ch">Interested in collaborating or have questions? I'm always happy to chat.</p>
+        <p><a class="btn" href="mailto:hello@example.com">Email Thomas</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-copy">&copy; <span id="year"></span> Thomas Knout</div>
+  </div>
+</footer>
+</body>
+</html>

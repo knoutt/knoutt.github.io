@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thomas Knout - Projects</title>
+<meta name="description" content="Full project archive of Thomas Knout">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body class="projects">
+<div class="global-bg" aria-hidden="true"></div>
+<canvas class="fluid-layer" aria-hidden="true"></canvas>
+<div class="fluid-frost" aria-hidden="true"></div>
+
+<header role="banner" aria-label="Top navigation">
+  <div class="container nav">
+    <div class="brand">
+      <img class="brand-icon" src="assets/TK.svg" alt="" aria-hidden="true">
+      <span>Thomas Knout</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a class="cta" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero" aria-labelledby="projects-hero-title">
+    <div class="container">
+      <div class="glass liquid content">
+        <h1 class="page-title" id="projects-hero-title">Projects</h1>
+        <p class="page-sub">A full archive of my personal projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-page" aria-labelledby="projects-title">
+    <div class="container">
+      <h2 class="section-title" id="projects-title">All Projects</h2>
+
+      <div class="projects-grid" role="list">
+        <article class="project-tile" role="listitem" id="project-fieldmesh">
+          <button class="project-hit" type="button" aria-expanded="false" aria-controls="project-fieldmesh-details">
+            <div class="project-cover">
+              <img src="assets/ProjFM.png" alt="FieldMesh hub and mesh node hero image">
+            </div>
+            <div class="project-meta">
+              <div class="project-kicker">Rapid-Deploy Mesh Communications Hub</div>
+              <h3 class="project-title">FieldMesh</h3>
+            </div>
+          </button>
+          <div class="project-detail" id="project-fieldmesh-details" role="region" aria-label="FieldMesh details">
+            <div class="project-detail-inner">
+              <p class="project-desc">
+                FieldMesh is a compact, self-contained mesh communications and sensing system that operates fully offline. It combines low-power long-range radios with a local web dashboard so nearby devices can view, relay, and visualize data without external infrastructure.
+              </p>
+              <div class="project-actions">
+                <a class="btn" href="assets/MeshProj.pdf" target="_blank" rel="noopener">Read full write-up</a>
+              </div>
+              <div class="project-gallery">
+                <button class="gallery-item" type="button" aria-label="Open FieldMesh hero image">
+                  <img src="assets/ProjFM.png" alt="FieldMesh hub and mesh node hero image">
+                </button>
+                <button class="gallery-item" type="button" aria-label="Open FieldMesh hardware overview">
+                  <img src="assets/ProjFM2.png" alt="FieldMesh hardware overview">
+                </button>
+                <button class="gallery-item" type="button" aria-label="Open FieldMesh software architecture">
+                  <img src="assets/ProjFM3.png" alt="FieldMesh software architecture">
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-tile" role="listitem" id="project-lianli">
+          <button class="project-hit" type="button" aria-expanded="false" aria-controls="project-lianli-details">
+            <div class="project-cover">
+              <img src="assets/ProjVC.png" alt="Lian-Li O11 Vision compact grommet cover and RTX 5090 custom cooler hero image">
+            </div>
+            <div class="project-meta">
+              <h3 class="project-title">Lian-Li O11 Vision Compact Grommet Cover and RTX 5090 Custom Cooler</h3>
+            </div>
+          </button>
+          <div class="project-detail" id="project-lianli-details" role="region" aria-label="Lian-Li O11 Vision details">
+            <div class="project-detail-inner">
+              <p class="project-desc">
+                This project focused on enhancing the aesthetics of my PC, particularly focused on covering up some features I did not want to see. The redesigned grommet cover and GPU shroud were reverse engineered based on the original part, before I redesigned them to remove the logo-heavy styling and better match the overall vibe of the build.
+              </p>
+              <div class="project-gallery">
+                <button class="gallery-item" type="button" aria-label="Open Lian-Li O11 Vision hero image">
+                  <img src="assets/ProjVC.png" alt="Lian-Li O11 Vision compact grommet cover and RTX 5090 custom cooler hero image">
+                </button>
+                <button class="gallery-item" type="button" aria-label="Open Lian-Li O11 Vision grommet cover detail">
+                  <img src="assets/ProjVC2.png" alt="Lian-Li O11 Vision grommet cover detail">
+                </button>
+                <button class="gallery-item" type="button" aria-label="Open Lian-Li O11 Vision GPU shroud detail">
+                  <img src="assets/ProjVC3.png" alt="Lian-Li O11 Vision GPU shroud detail">
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-copy">&copy; <span id="year"></span> Thomas Knout</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Project image preview">
+  <div class="lightbox-content">
+    <button class="lightbox-close" type="button" aria-label="Close image preview">&times;</button>
+    <img src="" alt="">
+  </div>
+</div>
+</body>
+</html>
