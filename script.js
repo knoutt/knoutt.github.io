@@ -1,7 +1,9 @@
 (() => {
     'use strict';
 
-    const isFluidMobile = window.matchMedia('(max-width: 820px)').matches || /Mobi|Android/i.test(navigator.userAgent);
+    const isFluidCoarse = window.matchMedia('(pointer: coarse)').matches;
+    const isFluidNarrow = window.matchMedia('(max-width: 680px)').matches;
+    const isFluidMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || (isFluidCoarse && isFluidNarrow);
     const canvas = document.querySelector('.fluid-layer');
     if (!canvas) return;
     if (isFluidMobile) return;
@@ -1502,8 +1504,8 @@ function hashCode (s) {
   'use strict';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-  const isNarrow = window.matchMedia('(max-width: 820px)').matches;
-  const isMobile = isNarrow || /Mobi|Android/i.test(navigator.userAgent);
+  const isNarrow = window.matchMedia('(max-width: 680px)').matches;
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || (isCoarse && isNarrow);
   const isTouch = isCoarse;
   document.body.classList.toggle('is-mobile', isMobile);
   let lowMemory = false;
