@@ -239,6 +239,13 @@ nav a.cta:visited{ color:#fff; }
   transform:none;
   z-index:0;
 }
+.hero-fallback{
+  position:absolute;
+  inset:0;
+  background: url("assets/LDR_LLL1_0.png") center/cover no-repeat;
+  filter: saturate(1.05) brightness(1.02);
+  opacity:0;
+}
 .hero-canvas spline-viewer{
   position:absolute; inset:0;
   display:block;
@@ -766,6 +773,7 @@ body.projects .page-hero{ padding-top: calc(var(--space-8) + 84px) }
   padding-bottom: var(--space-6);
   overflow:hidden;
 }
+.is-mobile .hero-fallback{ opacity:1; }
 .is-mobile .hero .stage::before{
   content:"";
   position:absolute;
@@ -785,6 +793,73 @@ body.projects .page-hero{ padding-top: calc(var(--space-8) + 84px) }
   animation:none;
   filter: saturate(108%);
 }
+.low-memory-section{ display:flex; }
+.is-mobile .low-memory-section{ display:none; }
+.low-memory .fluid-layer,
+.low-memory .fluid-frost{ display:none; }
+.low-memory .hero-fallback{ opacity:1; }
+.low-memory .hero-canvas spline-viewer{ display:none !important; }
+
+.low-memory-section{
+  position:static;
+  height:0;
+  z-index:15;
+  padding:0;
+}
+.low-memory-card{
+  position:fixed;
+  left:18px;
+  bottom:24px;
+  top:auto;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:.45rem .7rem;
+  border-radius:999px;
+}
+.low-memory-label{
+  font-weight:700;
+  color:var(--text-100);
+  font-size:.9rem;
+}
+.low-memory-toggle{
+  border:0;
+  background:transparent;
+  padding:0;
+  cursor:pointer;
+}
+.toggle-track{
+  position:relative;
+  width:46px;
+  height:26px;
+  border-radius:999px;
+  background: linear-gradient(180deg, #ef6b5b, #c53e34);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+  display:block;
+  transition: background .25s ease, box-shadow .25s ease;
+}
+.toggle-thumb{
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow: 0 4px 10px rgba(8,40,52,.25);
+  transition: transform .25s ease;
+}
+body.low-memory .toggle-track{
+  background: linear-gradient(180deg, #59d38a, #2aa665);
+}
+body.low-memory .toggle-thumb{
+  transform: translateX(20px);
+}
+.low-memory-toggle:focus-visible .toggle-track{
+  outline:3px solid rgba(44,185,199,.55);
+  outline-offset:3px;
+}
+.is-mobile .low-memory-section{ display:none; }
 .is-mobile .brand span{ display:none; }
 
 @media (prefers-reduced-motion: reduce){

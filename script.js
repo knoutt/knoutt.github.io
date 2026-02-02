@@ -1,10 +1,16 @@
 (() => {
     'use strict';
 
-    const isFluidMobile = window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(max-width: 820px)').matches || /Mobi|Android/i.test(navigator.userAgent);
+    const isFluidMobile = window.matchMedia('(max-width: 820px)').matches || /Mobi|Android/i.test(navigator.userAgent);
     const canvas = document.querySelector('.fluid-layer');
     if (!canvas) return;
     if (isFluidMobile) return;
+    try {
+        if (localStorage.getItem('lowMemoryMode') === 'true') return;
+    } catch {}
+    if (window.__fluidSimActive) return;
+
+    window.__fluidSimActive = true;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     resizeCanvas();
@@ -986,6 +992,10 @@ let colorUpdateTimer = 0.0;
 update();
 
 function update () {
+    if (window.__fluidSimPaused) {
+        requestAnimationFrame(update);
+        return;
+    }
     const dt = calcDeltaTime();
     if (resizeCanvas())
         initFramebuffers();
@@ -1493,16 +1503,24 @@ function hashCode (s) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isCoarse = window.matchMedia('(pointer: coarse)').matches;
   const isNarrow = window.matchMedia('(max-width: 820px)').matches;
-  const isMobile = isCoarse || isNarrow || /Mobi|Android/i.test(navigator.userAgent);
+  const isMobile = isNarrow || /Mobi|Android/i.test(navigator.userAgent);
+  const isTouch = isCoarse;
   document.body.classList.toggle('is-mobile', isMobile);
+  let lowMemory = false;
+  try {
+    lowMemory = localStorage.getItem('lowMemoryMode') === 'true';
+  } catch {}
+  if (isMobile) lowMemory = true;
+  document.body.classList.toggle('low-memory', lowMemory);
+  window.__fluidSimPaused = lowMemory;
 
   const spline = document.getElementById('spline');
-  if (spline && isMobile) {
+  if (spline && (isMobile || lowMemory)) {
     const heroCanvas = spline.closest('.hero-canvas');
     if (heroCanvas) heroCanvas.classList.add('spline-off');
     spline.remove();
   }
-  if (spline && !isMobile) {
+  if (spline && !isMobile && !lowMemory) {
     const existing = document.querySelector('script[data-spline-viewer]');
     if (!existing) {
       const script = document.createElement('script');
@@ -1625,7 +1643,7 @@ function hashCode (s) {
 
     const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
     const el = project.querySelector('.media');
-    if (el && mediaInner && !isMobile && window.matchMedia('(hover: hover)').matches) {
+    if (el && mediaInner && !isTouch && window.matchMedia('(hover: hover)').matches) {
       el.addEventListener('mousemove', e => {
         const r = el.getBoundingClientRect();
         const nx = (e.clientX - r.left) / r.width - 0.5;
@@ -1814,6 +1832,51 @@ function hashCode (s) {
     }
   }
 
+  const lowMemoryToggle = document.querySelector('.low-memory-toggle');
+  if (lowMemoryToggle) {
+    const syncToggle = () => {
+      const enabled = document.body.classList.contains('low-memory');
+      lowMemoryToggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    };
+    syncToggle();
+    lowMemoryToggle.addEventListener('click', () => {
+      const enabled = !document.body.classList.contains('low-memory');
+      document.body.classList.toggle('low-memory', enabled);
+      try {
+        localStorage.setItem('lowMemoryMode', enabled ? 'true' : 'false');
+      } catch {}
+      const viewer = document.getElementById('spline');
+      if (enabled && viewer) {
+        viewer.remove();
+      }
+      if (!enabled && !isMobile && !document.getElementById('spline')) {
+        const heroCanvas = document.querySelector('.hero-canvas');
+        if (heroCanvas) {
+          const newViewer = document.createElement('spline-viewer');
+          newViewer.id = 'spline';
+          newViewer.setAttribute('loading-anim-type', 'spinner-small-light');
+          newViewer.setAttribute('url', 'assets/splinescene.splinecode?v=20260124');
+          heroCanvas.appendChild(newViewer);
+        }
+        const existing = document.querySelector('script[data-spline-viewer]');
+        if (!existing) {
+          const script = document.createElement('script');
+          script.type = 'module';
+          script.async = true;
+          script.src = 'https://unpkg.com/@splinetool/viewer@1.12.39/build/spline-viewer.js';
+          script.dataset.splineViewer = 'true';
+          document.head.appendChild(script);
+        }
+      }
+      window.__fluidSimPaused = enabled;
+      const fluidLayer = document.querySelector('.fluid-layer');
+      if (fluidLayer) {
+        fluidLayer.style.display = enabled ? 'none' : '';
+      }
+      syncToggle();
+    });
+  }
+
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   const navContainer = document.querySelector('.nav');
@@ -1854,7 +1917,7 @@ function hashCode (s) {
 
   const viewer = document.getElementById('spline');
   const removeSplineLogo = () => {
-    if (!viewer) return;
+    if (!viewer || document.body.classList.contains('low-memory') || document.body.classList.contains('is-mobile')) return;
     const hideIn = root => {
       if (!root || !root.querySelector) return false;
       const logo = root.querySelector('#logo') || root.querySelector('a[href*="spline.design"]');

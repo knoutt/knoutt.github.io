@@ -36,6 +36,7 @@
   <section class="hero" aria-labelledby="intro-heading">
     <div class="stage">
       <div class="hero-canvas" aria-hidden="true">
+        <div class="hero-fallback" aria-hidden="true"></div>
         <spline-viewer id="spline" loading-anim-type="spinner-small-light" url="assets/splinescene.splinecode?v=20260124">
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAGCAYAAACij5zfAAADKklEQVR4AQCBAH7/AM93G3LOdxt7zHccjMl2HKLGdR28wnUe1710H/C5dCH/tXQi/7F0JP+udSb/rHYo/6x4Kv+sei3/rXwu/69/MPiygTHytoQw77qFL/C9hi30wYYp+8SGJP/HhB7/yYEX/8p+EP/Legj/y3UA/8pxAP/JbQD/yWoA+chnAPTIZgDyAIEAfv8A1XccbNR3HHXSdxyF0HYdnM12HrbJdiDRxnYh6sJ2I/+/diX/vHYn/7p3Kf+4eSz/uHou/7l9MP+6fzL7vYEz8sGENOvFhjTpyYgz6s6JMe7Tii7114op/NuJJP/ehx7/4IQX/+KBEP/jfQn/5HoC/+R3AP3kdAD35HIA8+RxAPAAgQB+/wDQdhtxz3Ybes52HIvMdx2hyncfu8h3IdbFdyPwwncl/8B4J/++eSr/vHos/7x7Lv+8fDD/vX4y/8CAM//DgjT1x4Q178yGNOzRiDPt14oy8d2LL/fjiyv+6Isn/+2KIv/yiRz/9ocW//mFEf/7ggv//YAG//5/Avz/fQD4/30A9QCBAH7/ALN0GHOydRh8snUZjbB1G6Svdh2+rXYf2qx3IfOqdyT/qHgm/6d4KP+meSr/pXks/6Z6Lf+ney7/qnwu/619Lvmxfi7yt38t7r2AK+7DginyyoIm+NGDI//YhB//34Qb/+WDF//rgxL/8IIO//SBCf/3gAb/+n8D/Pt+Afj8fgD1AIEAfv8AhXITZoVyFG+FcxWAhHMXmIN0GbOCdBvPgXUe6n91IP9+dSL/fXUj/3x1JP97dCX/fHQl/31zJf9/cyT/gnMj9YZyIe6Lcx/rkXMc65dzGu6fdBb0p3QT+q91EP+2dQz/vnUI/8V2BP/LdgD/0XUA/9V1APzZdQD323UA8tx1APABgQB+/wBjcBBbYnARZGJxEnVicRSOYXIWqmByGMdfcxrjXXMc+lxyHv9bch//WnEf/1lwH/9Zbh//Wm0d/1tsHP9eahn1YmkX72ZpFOtsaBHsc2gN73poCvWCaAb8i2kC/5NpAP+bagD/o2oA/6pqAP+wawD/tWsA/rlrAPi8awD0vWsA8s9Qo2hj/5+wAAAAAElFTkSuQmCC" alt="Spline preview" style="width: 100%; height: 100%;">
         </spline-viewer>
@@ -57,6 +58,17 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <path d="M6 9l6 6 6-6"/>
         </svg>
+      </button>
+    </div>
+  </section>
+
+  <section class="low-memory-section" aria-label="Performance mode toggle">
+    <div class="low-memory-card glass liquid">
+      <span class="low-memory-label">Laggy?</span>
+      <button class="low-memory-toggle" type="button" aria-pressed="false" aria-label="Toggle low memory mode">
+        <span class="toggle-track" aria-hidden="true">
+          <span class="toggle-thumb"></span>
+        </span>
       </button>
     </div>
   </section>
@@ -228,7 +240,7 @@
       <h2 class="section-title" id="contact-title">Contact</h2>
       <div class="glass liquid content">
         <p class="lead max-65ch">Interested in collaborating or have questions? I'm always happy to chat.</p>
-        <p><a class="btn" href="mailto:knoutt@my.yorku.ca">Email Thomas</a></p>
+        <p><a class="btn" href="mailto:knoutt@my.yorku.ca">Email me</a></p>
       </div>
     </div>
   </section>
