@@ -4,6 +4,7 @@
     const isFluidCoarse = window.matchMedia('(pointer: coarse)').matches;
     const isFluidNarrow = window.matchMedia('(max-width: 680px)').matches;
     const isFluidMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || (isFluidCoarse && isFluidNarrow);
+    if (document.body.classList.contains('contact')) return;
     const canvas = document.querySelector('.fluid-layer');
     if (!canvas) return;
     if (isFluidMobile) return;
@@ -1964,6 +1965,159 @@ function hashCode (s) {
   if (viewer && window.customElements && customElements.whenDefined) {
     customElements.whenDefined('spline-viewer').then(removeSplineLogo);
     window.addEventListener('load', removeSplineLogo);
+  }
+
+  const contactSection = document.querySelector('.contact-experience');
+  if (contactSection) {
+    const video = contactSection.querySelector('.contact-video');
+    const stage = contactSection.querySelector('.contact-stage');
+    const stageEls = Array.from(contactSection.querySelectorAll('[data-stage-text]'));
+    const cardEl = contactSection.querySelector('[data-stage-card]');
+    const progressEl = contactSection.querySelector('[data-hud-progress]');
+    const altEl = contactSection.querySelector('[data-hud-alt]');
+    const headingEl = contactSection.querySelector('[data-hud-heading]');
+    const timeEl = contactSection.querySelector('[data-hud-time]');
+
+    const stageRanges = stageEls.map(el => ({
+      el,
+      from: parseFloat(el.dataset.stageFrom) || 0,
+      to: parseFloat(el.dataset.stageTo) || 1,
+    }));
+    const cardRange = cardEl ? {
+      from: parseFloat(cardEl.dataset.stageFrom) || 0.75,
+      to: parseFloat(cardEl.dataset.stageTo) || 1,
+    } : null;
+
+    let targetTime = 0;
+    let currentTime = 0;
+    let duration = 0;
+    let videoReady = false;
+    let primed = false;
+    let lastProgress = -1;
+    let rafId = null;
+
+    const formatTime = (t) => {
+      const s = Math.max(0, Math.floor(t || 0));
+      const mm = String(Math.floor(s / 60)).padStart(2, '0');
+      const ss = String(s % 60).padStart(2, '0');
+      return mm + ':' + ss;
+    };
+    const formatInt = (n) => Math.round(n).toLocaleString('en-US');
+
+    const computeProgress = () => {
+      const rect = contactSection.getBoundingClientRect();
+      const total = contactSection.offsetHeight - window.innerHeight;
+      if (total <= 0) return 0;
+      const scrolled = Math.max(0, Math.min(total, -rect.top));
+      return scrolled / total;
+    };
+
+    const primeVideo = () => {
+      if (primed || !video) return;
+      primed = true;
+      const play = video.play();
+      if (play && typeof play.then === 'function') {
+        play.then(() => {
+          video.pause();
+          try { video.currentTime = 0; } catch (e) {}
+        }).catch(() => {
+          try { video.currentTime = 0; } catch (e) {}
+        });
+      } else {
+        try { video.pause(); video.currentTime = 0; } catch (e) {}
+      }
+    };
+
+    const onMeta = () => {
+      duration = video.duration || 0;
+      videoReady = true;
+      try { video.pause(); } catch (e) {}
+      try { video.currentTime = 0; } catch (e) {}
+      updateOverlays(computeProgress());
+    };
+
+    const updateOverlays = (progress) => {
+      if (Math.abs(progress - lastProgress) < 0.0005) return;
+      lastProgress = progress;
+      contactSection.style.setProperty('--contact-progress', progress.toFixed(4));
+      if (progressEl) progressEl.style.width = (progress * 100).toFixed(2) + '%';
+      if (altEl) altEl.textContent = formatInt(progress * 31500);
+      if (headingEl) {
+        const heading = 88 + Math.sin(progress * Math.PI * 2.3) * 6 + progress * 2;
+        headingEl.textContent = formatInt(((heading % 360) + 360) % 360).padStart(3, '0');
+      }
+      if (timeEl) timeEl.textContent = formatTime(progress * (duration || 6.04));
+
+      stageRanges.forEach(({ el, from, to }) => {
+        const active = progress >= from && progress <= to;
+        el.classList.toggle('is-active', active);
+      });
+      if (cardEl && cardRange) {
+        const active = progress >= cardRange.from;
+        cardEl.classList.toggle('is-active', active);
+      }
+    };
+
+    const tick = () => {
+      rafId = null;
+      const delta = targetTime - currentTime;
+      const absDelta = Math.abs(delta);
+      if (absDelta > 0.001) {
+        currentTime += delta * 0.18;
+        if (videoReady) {
+          try { video.currentTime = Math.max(0, Math.min(duration || 0, currentTime)); } catch (e) {}
+        }
+        rafId = requestAnimationFrame(tick);
+      } else {
+        currentTime = targetTime;
+      }
+    };
+
+    const onScroll = () => {
+      const progress = computeProgress();
+      updateOverlays(progress);
+      if (duration > 0) {
+        targetTime = progress * duration;
+        if (rafId == null) rafId = requestAnimationFrame(tick);
+      }
+    };
+
+    if (video) {
+      video.muted = true;
+      video.playsInline = true;
+      if (video.readyState >= 1) {
+        onMeta();
+      } else {
+        video.addEventListener('loadedmetadata', onMeta, { once: true });
+      }
+      const primeOnGesture = () => {
+        primeVideo();
+        window.removeEventListener('pointerdown', primeOnGesture);
+        window.removeEventListener('keydown', primeOnGesture);
+        window.removeEventListener('scroll', primeOnGesture);
+      };
+      window.addEventListener('pointerdown', primeOnGesture, { passive: true, once: true });
+      window.addEventListener('keydown', primeOnGesture, { once: true });
+      window.addEventListener('scroll', primeOnGesture, { passive: true, once: true });
+      primeVideo();
+    }
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    if (reducedMotion) {
+      stageRanges.forEach(({ el }) => el.classList.add('is-active'));
+      if (cardEl) cardEl.classList.add('is-active');
+    }
+
+    const stampTrigger = contactSection.querySelector('[data-stamp-trigger]');
+    if (stampTrigger && cardEl) {
+      stampTrigger.addEventListener('click', () => {
+        if (cardEl.classList.contains('is-stamped')) return;
+        cardEl.classList.add('is-stamped');
+      });
+    }
   }
 })();
 
