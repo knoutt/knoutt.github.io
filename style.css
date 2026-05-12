@@ -981,14 +981,7 @@ body.contact .fluid-layer,
 body.contact .fluid-frost{ display:none }
 body.contact main{ padding-top:0 }
 body.contact section.contact-experience{ padding-block:0 }
-body.contact .site-footer{
-  position:relative;
-  z-index:2;
-  background:#050b12;
-  color: rgba(255,255,255,.55);
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-body.contact .site-footer .footer-copy{ color: rgba(255,255,255,.55) }
+body.contact .site-footer{ display: none }
 
 body.contact header{
   background: linear-gradient(180deg, rgba(5,11,18,.78), rgba(5,11,18,.18));
@@ -1394,12 +1387,13 @@ body.contact nav a[aria-current="page"]{
 .contact-hint{
   position:absolute;
   left: 50%;
-  bottom: clamp(20px, 4vh, 38px);
+  bottom: clamp(18px, 3.5vh, 32px);
   translate: -50% 0;
   z-index: 4;
   display:flex;
+  flex-direction: column;
   align-items:center;
-  gap: 10px;
+  gap: 2px;
   color: rgba(255, 232, 196, 0.95);
   font-family: 'Caveat', cursive;
   font-weight: 600;
@@ -1411,16 +1405,17 @@ body.contact nav a[aria-current="page"]{
   transform: rotate(-1.5deg);
 }
 .hint-plane{
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   color: rgba(255, 232, 196, 0.95);
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
-  animation: hintPlaneDrift 3.2s ease-in-out infinite;
+  animation: hintPlaneDrift 2.4s ease-in-out infinite;
+  transform-origin: center;
 }
-.hint-label{ line-height: 1; padding-top: 2px }
+.hint-label{ line-height: 1 }
 @keyframes hintPlaneDrift{
-  0%, 100%{ transform: translateY(0) rotate(-6deg) }
-  50%{ transform: translateY(-3px) rotate(4deg) }
+  0%, 100%{ transform: translateY(0) rotate(86deg) }
+  50%{ transform: translateY(4px) rotate(94deg) }
 }
 
 .contact-scroll-spacer{

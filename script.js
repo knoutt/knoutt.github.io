@@ -1969,6 +1969,13 @@ function hashCode (s) {
 
   const contactSection = document.querySelector('.contact-experience');
   if (contactSection) {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('pageshow', e => {
+      if (e.persisted) window.scrollTo(0, 0);
+    });
     const video = contactSection.querySelector('.contact-video');
     const stage = contactSection.querySelector('.contact-stage');
     const stageEls = Array.from(contactSection.querySelectorAll('[data-stage-text]'));
