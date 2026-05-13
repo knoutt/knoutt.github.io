@@ -1,4 +1,25 @@
 (() => {
+  'use strict';
+  if (typeof window === 'undefined' || !window.Lenis) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.__lenisActive) return;
+  window.__lenisActive = true;
+
+  const lenis = new window.Lenis({
+    duration: 1.15,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+  window.__lenis = lenis;
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+})();
+
+(() => {
     'use strict';
 
     const isFluidCoarse = window.matchMedia('(pointer: coarse)').matches;
@@ -1966,6 +1987,36 @@ function hashCode (s) {
     customElements.whenDefined('spline-viewer').then(removeSplineLogo);
     window.addEventListener('load', removeSplineLogo);
   }
+
+  const escapeHtml = (s) => s.replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+
+  function applySlotEffect(el) {
+    if (!el || el.dataset.slotApplied === 'true') return;
+    if (el.children.length > 0) return;
+    const text = (el.textContent || '').trim();
+    if (!text) return;
+
+    const letters = Array.from(text).map((char, i) => {
+      const display = char === ' ' ? ' ' : escapeHtml(char);
+      return '<span class="btn-letter" style="--i:' + i + '">' + display + '</span>';
+    }).join('');
+
+    el.classList.add('has-slot');
+    el.innerHTML =
+      '<span class="btn-slot" aria-hidden="true">' +
+        '<span class="btn-slot-up">' + letters + '</span>' +
+        '<span class="btn-slot-down">' + letters + '</span>' +
+      '</span>' +
+      '<span class="sr-only">' + escapeHtml(text) + '</span>';
+    el.dataset.slotApplied = 'true';
+  }
+
+  const slotTargets = document.querySelectorAll(
+    'a.btn, a.cta, .footer-nav a, .nav-links a:not(.brand), button.btn'
+  );
+  slotTargets.forEach(applySlotEffect);
 
   const contactSection = document.querySelector('.contact-experience');
   if (contactSection) {

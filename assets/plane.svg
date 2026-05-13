@@ -1,0 +1,27 @@
+<svg width="150" height="100" xmlns="http://www.w3.org/2000/svg">
+ <!-- SVG created with Arrow, by QuiverAI (https://quiver.ai) -->
+ <defs>
+  <linearGradient y2="0.12594" y1="0.63748" x2="1" x1="0.01028" id="SVGID_1_">
+   <stop offset="0" stop-color="#E6E6E8"/>
+   <stop offset="0.6786" stop-color="#FBFBFB"/>
+  </linearGradient>
+  <linearGradient y2="0.0988" y1="0.51441" x2="0.88215" x1="0.06404" id="SVGID_2_">
+   <stop offset="0" stop-color="#D4DCE2"/>
+   <stop offset="0.4831" stop-color="#D1D1D1"/>
+   <stop offset="0.8003" stop-color="#A5A8AD"/>
+   <stop offset="1" stop-color="#B3B6BA"/>
+  </linearGradient>
+  <linearGradient y2="0.76165" y1="0.57055" x2="0.1143" x1="0.0175" id="SVGID_3_">
+   <stop offset="0" stop-color="#D8DCDF"/>
+   <stop offset="1" stop-color="#D1CFCD"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_2" fill="#ABB9C4" d="m39.2,92.7l19.4,-14.8l0.4,-0.4l-0.3,-0.4l-9,-11l-10.5,26.6z" class="cls-1"/>
+  <path id="svg_3" fill="url(#SVGID_1_)" d="m149.4,1.1c-2.3,0.2 -147.5,16.1 -147.8,16.9c-0.2,0.2 -0.4,0.3 -0.2,0.9l32.6,32.9l115.4,-50.7z" class="cls-2"/>
+  <path id="svg_4" fill="#F9F9F9" d="m49.7,65.8l26.2,32.9c0.3,0.4 0.8,0.4 1.1,0l72.4,-97.6l-99.7,64.7z" class="cls-3"/>
+  <path id="svg_5" fill="url(#SVGID_2_)" d="m34,51.8l5,40.9l10.7,-26.9l99.7,-64.7l-115.4,50.7z" class="cls-4"/>
+  <path id="svg_6" fill="url(#SVGID_3_)" d="m34,51.8l5.2,40.3l10.5,-26.3l99.7,-64.7l-115.4,50.7z"/>
+ </g>
+</svg>

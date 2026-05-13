@@ -6,6 +6,7 @@
 <title>Thomas Knout - Portfolio</title>
 <meta name="description" content="Mechanical Engineering Portfolio of Thomas Knout">
 <link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js" defer></script>
 <script src="script.js" defer></script>
 </head>
 <body class="home">
@@ -238,9 +239,21 @@
   <section id="contact" aria-labelledby="contact-title">
     <div class="container">
       <h2 class="section-title" id="contact-title">Contact</h2>
-      <div class="glass liquid content">
-        <p class="lead max-65ch">Interested in collaborating or have questions? I'm always happy to chat.</p>
-        <p><a class="btn" href="contact.html">Send a paper plane</a></p>
+      <div class="contact-flight">
+        <svg class="flight-trail flight-trail-back" viewBox="0 0 1200 280" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 320 50 C 480 150, 600 240, 720 230"/>
+        </svg>
+        <div class="glass liquid content contact-flight-card">
+          <p class="lead max-65ch">Interested in collaborating or have questions? I'm always happy to chat.</p>
+          <p><a class="btn" href="contact.html">Let&rsquo;s chat</a></p>
+          <img class="hero-plane-mobile" src="assets/plane.svg" alt="" aria-hidden="true">
+        </div>
+        <svg class="flight-trail flight-trail-front" viewBox="0 0 1200 280" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M -250 -20 C -50 0, 252 8, 320 50"/>
+          <path d="M 720 230 C 920 240, 1010 80, 1055 67"/>
+        </svg>
+        <img class="hero-plane-img" src="assets/plane.svg" alt="" aria-hidden="true">
+        <img class="ground-debris" src="assets/debris.png" alt="" aria-hidden="true">
       </div>
     </div>
   </section>
@@ -248,6 +261,15 @@
 
 <footer class="site-footer">
   <div class="container footer-content">
+    <a class="footer-brand" href="index.html" aria-label="Thomas Knout - Home">
+      <img class="brand-icon" src="assets/TK.svg" alt="" aria-hidden="true">
+      <span>Thomas Knout</span>
+    </a>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
     <div class="footer-copy">&copy; <span id="year"></span> Thomas Knout</div>
   </div>
 </footer>
