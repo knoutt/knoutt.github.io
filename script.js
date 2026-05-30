@@ -1524,6 +1524,21 @@ function hashCode (s) {
 })();
 (() => {
   'use strict';
+
+  // Keep Lenis informed when document height changes (project tiles, dynamic content, etc.)
+  if (window.__lenis && typeof ResizeObserver !== 'undefined') {
+    let resizeTimer = null;
+    const ro = new ResizeObserver(() => {
+      if (resizeTimer) cancelAnimationFrame(resizeTimer);
+      resizeTimer = requestAnimationFrame(() => {
+        const l = window.__lenis;
+        if (l && typeof l.resize === 'function') l.resize();
+      });
+    });
+    ro.observe(document.documentElement);
+    ro.observe(document.body);
+  }
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isCoarse = window.matchMedia('(pointer: coarse)').matches;
   const isNarrow = window.matchMedia('(max-width: 680px)').matches;
@@ -1559,11 +1574,20 @@ function hashCode (s) {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  const smoothScrollTo = (target) => {
+    if (!target) return;
+    const l = window.__lenis;
+    if (l && typeof l.scrollTo === 'function') {
+      l.scrollTo(target, { duration: 0.9 });
+    } else {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const chevron = document.getElementById('chevron');
   if (chevron) {
     chevron.addEventListener('click', () => {
-      const about = document.getElementById('about');
-      if (about) about.scrollIntoView({ behavior: 'smooth' });
+      smoothScrollTo(document.getElementById('about'));
     });
   }
 
@@ -1728,6 +1752,20 @@ function hashCode (s) {
     });
   };
 
+  const refreshLenis = () => {
+    const l = window.__lenis;
+    if (!l) return;
+    if (typeof l.resize === 'function') l.resize();
+  };
+  const scrollToTile = (tile) => {
+    const l = window.__lenis;
+    if (l && typeof l.scrollTo === 'function') {
+      l.scrollTo(tile, { offset: 0, duration: 0.8 });
+    } else {
+      tile.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   if (tiles.length) {
     tiles.forEach(tile => {
       const btn = tile.querySelector('.project-hit');
@@ -1737,14 +1775,17 @@ function hashCode (s) {
         const token = animationToken;
         if (tile.classList.contains('is-open')) {
           animateLayout(() => setOpen(null));
+          setTimeout(refreshLenis, 560);
           return;
         }
         animateLayout(() => setOpen(tile), { stagger: true });
         const scrollDelay = isMobile ? 60 : 140;
         setTimeout(() => {
           if (token !== animationToken) return;
-          tile.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          refreshLenis();
+          scrollToTile(tile);
         }, scrollDelay);
+        setTimeout(refreshLenis, 560);
       });
     });
   }
