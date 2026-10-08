@@ -3,249 +3,315 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thomas Knout - Portfolio</title>
-<meta name="description" content="Mechanical Engineering Portfolio of Thomas Knout">
+<title>Thomas Knout — Mechanical Engineering</title>
+<meta name="description" content="Thomas Knout, mechanical engineering student in Toronto. Desk-sized hardware: enclosures, electronics, firmware and the software around them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js" defer></script>
 <script src="script.js" defer></script>
 </head>
 <body class="home">
-<div class="global-bg" aria-hidden="true"></div>
-<canvas class="fluid-layer" aria-hidden="true"></canvas>
-<div class="fluid-frost" aria-hidden="true"></div>
 
-<header role="banner" aria-label="Top navigation">
-  <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Thomas Knout - Home">
-      <img class="brand-icon" src="assets/TK.svg" alt="" aria-hidden="true">
-      <span>Thomas Knout</span>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html" aria-label="Thomas Knout, home">
+      <img class="brand-mark" src="assets/TK.svg" alt="" aria-hidden="true">
+      <span class="brand-name">Thomas Knout</span>
     </a>
-    <nav class="nav-links" id="nav-links">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="projects.html">Projects</a>
-      <a class="cta" href="contact.html">Contact</a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#work"><span class="nav-no">01</span>Work</a>
+      <a href="#about"><span class="nav-no">02</span>About</a>
+      <a href="#experience"><span class="nav-no">03</span>Experience</a>
+      <a href="contact.html"><span class="nav-no">04</span>Contact</a>
     </nav>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="head-clock mono" aria-label="Local time in Toronto"><span>YYZ</span> <time data-clock>--:--</time></div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <span></span><span></span>
     </button>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero" aria-labelledby="intro-heading">
-    <div class="stage">
-      <div class="hero-canvas" aria-hidden="true">
-        <div class="hero-fallback" aria-hidden="true"></div>
-        <spline-viewer id="spline" loading-anim-type="spinner-small-light" url="assets/splinescene.splinecode?v=20260124">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAGCAYAAACij5zfAAADKklEQVR4AQCBAH7/AM93G3LOdxt7zHccjMl2HKLGdR28wnUe1710H/C5dCH/tXQi/7F0JP+udSb/rHYo/6x4Kv+sei3/rXwu/69/MPiygTHytoQw77qFL/C9hi30wYYp+8SGJP/HhB7/yYEX/8p+EP/Legj/y3UA/8pxAP/JbQD/yWoA+chnAPTIZgDyAIEAfv8A1XccbNR3HHXSdxyF0HYdnM12HrbJdiDRxnYh6sJ2I/+/diX/vHYn/7p3Kf+4eSz/uHou/7l9MP+6fzL7vYEz8sGENOvFhjTpyYgz6s6JMe7Tii7114op/NuJJP/ehx7/4IQX/+KBEP/jfQn/5HoC/+R3AP3kdAD35HIA8+RxAPAAgQB+/wDQdhtxz3Ybes52HIvMdx2hyncfu8h3IdbFdyPwwncl/8B4J/++eSr/vHos/7x7Lv+8fDD/vX4y/8CAM//DgjT1x4Q178yGNOzRiDPt14oy8d2LL/fjiyv+6Isn/+2KIv/yiRz/9ocW//mFEf/7ggv//YAG//5/Avz/fQD4/30A9QCBAH7/ALN0GHOydRh8snUZjbB1G6Svdh2+rXYf2qx3IfOqdyT/qHgm/6d4KP+meSr/pXks/6Z6Lf+ney7/qnwu/619Lvmxfi7yt38t7r2AK+7DginyyoIm+NGDI//YhB//34Qb/+WDF//rgxL/8IIO//SBCf/3gAb/+n8D/Pt+Afj8fgD1AIEAfv8AhXITZoVyFG+FcxWAhHMXmIN0GbOCdBvPgXUe6n91IP9+dSL/fXUj/3x1JP97dCX/fHQl/31zJf9/cyT/gnMj9YZyIe6Lcx/rkXMc65dzGu6fdBb0p3QT+q91EP+2dQz/vnUI/8V2BP/LdgD/0XUA/9V1APzZdQD323UA8tx1APABgQB+/wBjcBBbYnARZGJxEnVicRSOYXIWqmByGMdfcxrjXXMc+lxyHv9bch//WnEf/1lwH/9Zbh//Wm0d/1tsHP9eahn1YmkX72ZpFOtsaBHsc2gN73poCvWCaAb8i2kC/5NpAP+bagD/o2oA/6pqAP+wawD/tWsA/rlrAPi8awD0vWsA8s9Qo2hj/5+wAAAAAElFTkSuQmCC" alt="Spline preview" style="width: 100%; height: 100%;">
-        </spline-viewer>
-      </div>
-      <div class="hero-blur" aria-hidden="true"></div>
 
-      <div class="container hero-content">
-        <div class="hero-card glass liquid">
-          <h1 class="hero-title" id="intro-heading">Thomas Knout</h1>
-          <p class="hero-sub">Mechanical Engineering Student</p>
-          <div class="hero-actions">
-            <a class="btn" href="#projects">See my work</a>
-            <a class="btn" href="#contact">Get in touch</a>
-          </div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow mono">Mechanical Engineering &middot; Toronto, CA</p>
+        <h1 class="hero-title" id="hero-title">I build the things that sit on my desk.</h1>
+        <p class="hero-lede">
+          I'm <strong>Thomas Knout</strong>, a mechanical engineering student. I take small, practical
+          ideas from sketch to finished object: CAD, printed enclosures, wiring, firmware, and the
+          software that ties it together.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#work">See the work <span class="btn-arrow" aria-hidden="true">&darr;</span></a>
+          <a class="link-u" href="contact.html">Get in touch</a>
         </div>
       </div>
 
-      <button class="chevron" id="chevron" aria-label="Scroll to About" aria-controls="about">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
+      <figure class="hero-plate" aria-labelledby="hero-plate-cap">
+        <div class="plate-frame">
+          <span class="plate-tag mono">TK-05 &middot; Desktop Flight Radar</span>
+          <div class="callout-stage">
+            <img class="callout-img" src="assets/radar-map.webp" alt="Desktop flight radar showing live aircraft over a map of Toronto on a round screen" width="506" height="517">
+            <svg class="callout-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <polyline points="52,30.4 64,6 100,6"/>
+              <polyline points="54,46.5 78,66 100,66"/>
+              <polyline points="31.7,22.4 20,42 0,42"/>
+            </svg>
+            <span class="callout-dot" style="left:52%;top:30.4%" aria-hidden="true"></span>
+            <span class="callout-dot" style="left:54%;top:46.5%" aria-hidden="true"></span>
+            <span class="callout-dot" style="left:31.7%;top:22.4%" aria-hidden="true"></span>
+            <span class="callout c1"><b class="mono">01</b>Local weather</span>
+            <span class="callout c2"><b class="mono">02</b>Live ADS-B traffic</span>
+            <span class="callout c3"><b class="mono">03</b>Printed bezel</span>
+          </div>
+        </div>
+        <figcaption id="hero-plate-cap" class="plate-cap mono">
+          <span>Fig. 1</span><span>On the bench now: flight radar, running live over Toronto</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap">
+      <dl class="hero-strip">
+        <div><dt class="mono">Discipline</dt><dd>Mechanical Engineering</dd></div>
+        <div><dt class="mono">Builds</dt><dd>Enclosures &middot; Electronics &middot; Firmware</dd></div>
+        <div><dt class="mono">Interests</dt><dd>Automotive &middot; Aerospace &middot; Tech</dd></div>
+        <div><dt class="mono">Based</dt><dd>Toronto, Canada</dd></div>
+      </dl>
     </div>
   </section>
 
-  <section class="low-memory-section" aria-label="Performance mode toggle">
-    <div class="low-memory-card glass liquid">
-      <span class="low-memory-label">Laggy?</span>
-      <button class="low-memory-toggle" type="button" aria-pressed="false" aria-label="Toggle low memory mode">
-        <span class="toggle-track" aria-hidden="true">
-          <span class="toggle-thumb"></span>
-        </span>
-      </button>
+  <section class="sec" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no mono">01</span>
+        <h2 class="sec-title" id="work-title">Selected work</h2>
+        <span class="sec-meta mono">5 projects &middot; 2 new</span>
+      </header>
+
+      <article class="feature" id="flight-radar" aria-labelledby="radar-title">
+        <div class="feature-bar mono">
+          <span class="part-no">TK-05</span>
+          <span>Embedded &middot; Enclosure &middot; Data</span>
+          <span class="new-tag">New</span>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-media">
+            <div class="plate plate-lg">
+              <img src="assets/radar-detail.webp" alt="Flight radar detail view: Air Canada A330 photo, route YYZ to CPH, altitude 16,325 ft, 405 knots, 13.5 nautical miles away" width="521" height="532" loading="lazy">
+              <span class="plate-corner" aria-hidden="true"></span>
+            </div>
+            <div class="plate-row">
+              <button class="plate plate-sm" type="button" data-lightbox="assets/radar-map.webp" aria-label="Enlarge map view">
+                <img src="assets/radar-map.webp" alt="Map view with live traffic over Toronto" width="506" height="517" loading="lazy">
+              </button>
+              <div class="render-slot mono" aria-label="CAD render to be added">
+                <span>CAD render</span><span class="render-slot-sub">pending</span>
+              </div>
+            </div>
+          </div>
+          <div class="feature-copy">
+            <h3 class="feature-title" id="radar-title">Desktop Flight Radar</h3>
+            <p class="feature-lede">
+              A palm-sized instrument that lives under my monitor and shows every aircraft over Toronto in real time.
+            </p>
+            <p>
+              The round touchscreen draws a city basemap with live traffic, each plane tagged with its callsign,
+              type and altitude. Tap one and it pulls up a photo of that exact airframe, the airline, route,
+              altitude, ground speed, distance, track and climb rate.
+            </p>
+            <dl class="spec">
+              <div><dt>Display</dt><dd>Round touchscreen <span class="tbd">size?</span></dd></div>
+              <div><dt>Controller</dt><dd><span class="tbd">MCU / board?</span></dd></div>
+              <div><dt>Data</dt><dd>Live ADS-B traffic <span class="tbd">source?</span>, aircraft photos via planespotters.net</dd></div>
+              <div><dt>Enclosure</dt><dd>3D-printed body, screw-down bezel, angled desk stand</dd></div>
+              <div><dt>Power</dt><dd>USB</dd></div>
+            </dl>
+            <a class="link-u" href="projects.html#flight-radar">Full project sheet</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature feature-flip" id="volume-mixer" aria-labelledby="mixer-title">
+        <div class="feature-bar mono">
+          <span class="part-no">TK-04</span>
+          <span>Hardware &middot; Firmware &middot; Desktop app</span>
+          <span class="new-tag">New</span>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-media">
+            <div class="plate plate-lg">
+              <img src="assets/mixer-angle.webp" alt="PC volume mixer: black printed enclosure, four faders with dice caps, three keys and a strip display" width="663" height="577" loading="lazy">
+              <span class="plate-corner" aria-hidden="true"></span>
+            </div>
+            <div class="plate-row">
+              <button class="plate plate-sm" type="button" data-lightbox="assets/mixer-front.webp" aria-label="Enlarge top view">
+                <img src="assets/mixer-front.webp" alt="Top view of the volume mixer showing Master, Discord, Spotify and Chrome levels" width="460" height="519" loading="lazy">
+              </button>
+              <div class="render-slot mono" aria-label="CAD render to be added">
+                <span>CAD render</span><span class="render-slot-sub">pending</span>
+              </div>
+            </div>
+          </div>
+          <div class="feature-copy">
+            <h3 class="feature-title" id="mixer-title">PC Volume Mixer</h3>
+            <p class="feature-lede">
+              Physical faders for per-app volume, so Discord, Spotify and a game never have to fight over one slider.
+            </p>
+            <p>
+              Four faders each control a program, with the strip display mirroring every level and app icon.
+              Three keys page between fader banks, and a companion desktop app maps any program to any fader
+              and talks to the mixer over USB. The fader caps are printed dice: count the pips for the channel number.
+            </p>
+            <dl class="spec">
+              <div><dt>Inputs</dt><dd>4 slide faders, 3 keys, per-channel status LEDs</dd></div>
+              <div><dt>Display</dt><dd>Strip touchscreen <span class="tbd">size / model?</span></dd></div>
+              <div><dt>Controller</dt><dd><span class="tbd">MCU / board?</span></dd></div>
+              <div><dt>Software</dt><dd>Windows companion app <span class="tbd">stack?</span>, USB link</dd></div>
+              <div><dt>Enclosure</dt><dd>3D-printed, sloped control deck</dd></div>
+            </dl>
+            <a class="link-u" href="projects.html#volume-mixer">Full project sheet</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="archive">
+        <p class="archive-label mono">Earlier work</p>
+        <ul class="archive-list">
+          <li>
+            <a class="archive-row" href="projects.html#sync-display">
+              <span class="part-no mono">TK-03</span>
+              <span class="archive-name">Synchronized Three-Screen Photo Display</span>
+              <span class="archive-kind mono">ESP32 &middot; ESP-NOW</span>
+              <img class="archive-thumb" src="assets/ProjSL.png" alt="" loading="lazy">
+              <span class="archive-go" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <a class="archive-row" href="projects.html#fieldmesh">
+              <span class="part-no mono">TK-02</span>
+              <span class="archive-name">FieldMesh Rapid-Deploy Mesh Hub</span>
+              <span class="archive-kind mono">LoRa &middot; Raspberry Pi</span>
+              <img class="archive-thumb" src="assets/ProjFM.webp" alt="" loading="lazy">
+              <span class="archive-go" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li>
+            <a class="archive-row" href="projects.html#lian-li">
+              <span class="part-no mono">TK-01</span>
+              <span class="archive-name">O11 Vision Grommet Cover &amp; RTX 5090 Shroud</span>
+              <span class="archive-kind mono">Reverse engineering</span>
+              <img class="archive-thumb" src="assets/ProjVC.webp" alt="" loading="lazy">
+              <span class="archive-go" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section id="about" aria-labelledby="about-title">
-    <div class="container">
-      <h2 class="section-title" id="about-title">About</h2>
-      <div class="glass liquid content">
-        <p class="lead max-65ch">
-          Hi, I'm <strong>Thomas Knout</strong>, a Mechanical Engineering student interested in the automotive, tech, and aerospace industry. I enjoy building practical solutions to everyday problems and taking on creative challenges that help me learn and grow.
+  <section class="sec" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no mono">02</span>
+        <h2 class="sec-title" id="about-title">About</h2>
+        <span class="sec-meta mono">Toronto, CA</span>
+      </header>
+      <div class="about-grid">
+        <p class="about-lede">
+          Most of what I build starts as a small annoyance at my own desk and ends as a finished object.
         </p>
+        <div class="about-body">
+          <p>
+            I'm a mechanical engineering student drawn to the automotive, aerospace and tech industries.
+            I like projects that cross disciplines, where the enclosure, the electronics and the code all have
+            to agree with each other before anything works.
+          </p>
+          <p>
+            Outside of coursework that means reverse-engineering parts that bother me, designing hardware
+            that fits how I actually work, and seeing it through to something I use every day.
+          </p>
+          <ul class="tools mono" aria-label="Tools and skills">
+            <li>3D printing</li>
+            <li>Reverse engineering</li>
+            <li>ESP32</li>
+            <li>Raspberry Pi</li>
+            <li>LoRa / Meshtastic</li>
+            <li>ESP-NOW</li>
+            <li>Python &middot; FastAPI</li>
+            <li class="tbd">CAD package?</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="projects" aria-labelledby="projects-title">
-    <div class="container">
-      <h2 class="section-title" id="projects-title">Highlighted Projects</h2>
+  <section class="sec" id="experience" aria-labelledby="exp-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no mono">03</span>
+        <h2 class="sec-title" id="exp-title">Experience</h2>
+        <span class="sec-meta mono">2 roles</span>
+      </header>
 
-      <div class="projects">
-        <article class="project visible" data-io aria-labelledby="fieldmesh-title" id="project-fieldmesh">
-          <div class="box glass liquid media">
-            <div class="media-inner" id="media-tilt-fieldmesh">
-              <img src="assets/FM1.webp" alt="FieldMesh hub and mesh node hero image" data-main loading="lazy" decoding="async" aria-live="polite">
+      <div class="exp">
+        <article class="exp-row">
+          <div class="exp-who">
+            <img class="exp-logo" src="assets/688957e31eb1aca6ac8c761e_BmwLogo.avif" alt="BMW logo" width="44" height="44">
+            <div>
+              <h3 class="exp-co">BMW Group Canada</h3>
+              <p class="exp-role">Quality &amp; Technical Engineering Intern</p>
+              <p class="exp-when mono"><span class="tbd">dates?</span></p>
             </div>
           </div>
-
-          <div class="box glass liquid text">
-            <div class="project-body">
-              <h3 id="fieldmesh-title">FieldMesh - Rapid-Deploy Mesh Communications Hub</h3>
-              <p class="desc" id="fieldmesh-desc" data-default="FieldMesh is a compact, self-contained mesh communications and sensing system that operates fully offline. It combines low-power long-range radios with a local web dashboard so nearby devices can view, relay, and visualize data without external infrastructure.">
-                FieldMesh is a compact, self-contained mesh communications and sensing system that operates fully offline. It combines low-power long-range radios with a local web dashboard so nearby devices can view, relay, and visualize data without external infrastructure.
-              </p>
-            </div>
-
-            <div class="project-footer">
-              <div class="thumbs" role="list" aria-label="FieldMesh images">
-                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View FieldMesh hardware overview" data-blurb="Mesh nodes are LilyGO T-Beam units (ESP32 + LoRa + GPS) running Meshtastic, acting as both data sources and relays. A Raspberry Pi Zero 2 W hub connects to a T-Beam over USB and serves a local Wi-Fi dashboard that works in any browser with no internet required.">
-                  <img src="assets/FM2.webp" alt="">
-                </button>
-                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View FieldMesh software architecture" data-blurb="A single FastAPI service on the Pi Zero bridges the Meshtastic radio to an offline web dashboard. It normalizes packets, keeps in-memory node state with optional SQLite history, and streams live updates via SSE with simple local auth.">
-                  <img src="assets/FM3.webp" alt="">
-                </button>
-              </div>
-
-              <p class="swap-note">Hover to preview - click to lock</p>
-            </div>
-          </div>
+          <dl class="exp-duties">
+            <div><dt class="mono">Testing</dt><dd>Vehicle test-fitments and software validations. Special-tool inventories and equipment calibration.</dd></div>
+            <div><dt class="mono">Data</dt><dd>Compiled periodic service-trend KPIs. Analyzed retailer feedback for process improvements.</dd></div>
+            <div><dt class="mono">Publications</dt><dd>Reviewed and updated technical bulletins. Prepared reports for engineering, legal and police.</dd></div>
+          </dl>
         </article>
 
-        <article class="project visible" data-io aria-labelledby="p1-title" id="project-lianli">
-          <div class="box glass liquid media">
-            <div class="media-inner" id="media-tilt-1">
-              <img src="assets/VCHero.webp" alt="Lian-Li O11 Vision compact grommet cover and RTX 5090 custom cooler - hero image" data-main loading="lazy" decoding="async" aria-live="polite">
+        <article class="exp-row">
+          <div class="exp-who">
+            <img class="exp-logo" src="assets/68a71869e90ad3289237b422_DPsquare.avif" alt="Diversified Power logo" width="44" height="44">
+            <div>
+              <h3 class="exp-co">Diversified Power Inc.</h3>
+              <p class="exp-role">Special Project Lead</p>
+              <p class="exp-when mono"><span class="tbd">dates?</span></p>
             </div>
           </div>
-
-          <div class="box glass liquid text">
-            <div class="project-body">
-              <h3 id="p1-title">Lian-Li O11 Vision Compact Grommet Cover &amp; RTX 5090 Custom Cooler</h3>
-              <p class="desc" id="p1-desc" data-default="This project focused on enhancing the aesthetics of my PC, particularly focused on covering up some features I did not want to see. The redesigned grommet cover and GPU shroud were reverse engineered based on the original part, before I redesigned them to remove the logo-heavy styling and better match the overall vibe of the build.">
-                This project focused on enhancing the aesthetics of my PC, particularly focused on covering up some features I did not want to see. The redesigned grommet cover and GPU shroud were reverse engineered based on the original part, before I redesigned them to remove the logo-heavy styling and better match the overall vibe of the build.
-              </p>
-            </div>
-
-            <div class="project-footer">
-              <div class="thumbs" role="list" aria-label="Alternate images">
-                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View grommet cover detail" data-blurb="The O11 Vision has a large unused void above the motherboard. I designed a sculpted cover to occupy that gap and add visual interest. The part ties into existing geometry, hides cable runs, and turns empty space into clean, purposeful eye candy.">
-                  <img src="assets/VC2.webp" alt="">
-                </button>
-                <button class="thumb" type="button" role="listitem" data-thumb aria-pressed="false" aria-label="View GPU shroud detail" data-blurb="The GPU shipped with a loud, angular paint job and no RGB. I modeled and printed a snug ABS shroud to mask the stock styling and integrated a channel for an LED strip, giving the card a clean look and controllable lighting.">
-                  <img src="assets/VC3.webp" alt="">
-                </button>
-              </div>
-
-              <p class="swap-note">Hover to preview - click to lock</p>
-            </div>
-          </div>
+          <dl class="exp-duties">
+            <div><dt class="mono">Strategy</dt><dd>Led CDAP adoption and modernized workflows. Roadmapped technology against business goals.</dd></div>
+            <div><dt class="mono">ERP</dt><dd>Fit-gap analysis leading to Odoo. Implementation: data migration, testing and training.</dd></div>
+            <div><dt class="mono">Operations</dt><dd>Launched rental software and digitized inventory. Wrote internal process documentation.</dd></div>
+          </dl>
         </article>
       </div>
-
-      <div class="glass liquid all-projects-cta" aria-label="Full projects link">
-        <p class="lead">See all projects here.</p>
-        <a class="btn" href="projects.html">View full project archive</a>
-      </div>
     </div>
   </section>
 
-  <section id="experience" aria-labelledby="exp-title">
-    <div class="container">
-      <h2 class="section-title" id="exp-title">Experience</h2>
-
-      <div class="experience">
-        <section class="company-block" role="group" aria-labelledby="bmw-title">
-          <div class="company-head">
-            <div class="logo" role="img" aria-label="BMW Group">
-              <img class="company-logo" src="assets/688957e31eb1aca6ac8c761e_BmwLogo.avif" alt="BMW logo">
-            </div>
-            <div class="meta">
-              <div class="name" id="bmw-title">BMW Group Canada</div>
-              <div class="role">Quality &amp; Technical Engineering Intern</div>
-            </div>
-          </div>
-          <div class="responsibilities">
-            <div class="resp-card">
-              <h4>Testing</h4>
-              <ul>
-                <li>Vehicle test-fitments &amp; software validations</li>
-                <li>Special-tool inventories; equipment calibration</li>
-              </ul>
-            </div>
-            <div class="resp-card">
-              <h4>Data &amp; Metrics</h4>
-              <ul>
-                <li>Compiled periodic service-trend KPIs</li>
-                <li>Analyzed retailer feedback for process improvements</li>
-              </ul>
-            </div>
-            <div class="resp-card">
-              <h4>Service Publications</h4>
-              <ul>
-                <li>Reviewed and updated technical bulletins</li>
-                <li>Prepared reports for engineering, legal &amp; police</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="company-block" role="group" aria-labelledby="dp-title">
-          <div class="company-head">
-            <div class="logo" role="img" aria-label="Diversified Power Inc.">
-              <img class="company-logo" src="assets/68a71869e90ad3289237b422_DPsquare.avif" alt="Diversified Power logo">
-            </div>
-            <div class="meta">
-              <div class="name" id="dp-title">Diversified Power Inc.</div>
-              <div class="role">Special Project Lead</div>
-            </div>
-          </div>
-          <div class="responsibilities">
-            <div class="resp-card">
-              <h4>Tech Strategy &amp; CDAP</h4>
-              <ul>
-                <li>Led CDAP adoption; modernized workflows</li>
-                <li>Roadmapped technology with business goals</li>
-              </ul>
-            </div>
-            <div class="resp-card">
-              <h4>ERP Modernization</h4>
-              <ul>
-                <li>Fit-gap analysis -&gt; Odoo selection</li>
-                <li>Implementation: data migration, testing, training</li>
-              </ul>
-            </div>
-            <div class="resp-card">
-              <h4>Service Publications</h4>
-              <ul>
-                <li>Launched rental software; digitized inventory</li>
-                <li>Created internal documentation for processes</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" aria-labelledby="contact-title">
-    <div class="container">
-      <h2 class="section-title" id="contact-title">Contact</h2>
+  <section class="sec sec-dark" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no mono">04</span>
+        <h2 class="sec-title" id="contact-title">Contact</h2>
+        <span class="sec-meta mono">Replies within a day or two</span>
+      </header>
       <div class="contact-flight">
         <svg class="flight-trail flight-trail-back" aria-hidden="true">
           <path class="flight-path"/>
         </svg>
-        <div class="glass liquid content contact-flight-card">
-          <p class="lead max-65ch">Interested in collaborating or have questions? I'm always happy to chat.</p>
-          <p><a class="btn" href="contact.html">Let&rsquo;s chat</a></p>
+        <div class="contact-flight-card">
+          <p class="contact-card-kicker mono">Co-ops &middot; collaborations &middot; questions</p>
+          <p class="contact-card-text">Building something, hiring, or just curious how one of these works? Send a paper plane.</p>
+          <div class="contact-card-actions">
+            <a class="btn btn-signal" href="contact.html">Write to me <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+            <a class="mono contact-mail" href="mailto:knoutt@my.yorku.ca">knoutt@my.yorku.ca</a>
+          </div>
           <img class="hero-plane-mobile" src="assets/plane.svg" alt="" aria-hidden="true">
         </div>
         <svg class="flight-trail flight-trail-front" aria-hidden="true">
@@ -264,22 +330,26 @@
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-content">
-    <a class="footer-brand" href="index.html" aria-label="Thomas Knout - Home">
-      <img class="brand-icon" src="assets/TK.svg" alt="" aria-hidden="true">
-      <span>Thomas Knout</span>
-    </a>
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="footer-copy">&copy; <span id="year"></span> Thomas Knout</div>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="title-block mono">
+      <div class="tb-cell tb-wide"><span class="tb-k">Title</span><span class="tb-v">Thomas Knout &mdash; Portfolio</span></div>
+      <div class="tb-cell"><span class="tb-k">Drawn</span><span class="tb-v">T. Knout</span></div>
+      <div class="tb-cell"><span class="tb-k">Rev</span><span class="tb-v" data-year>2026</span></div>
+      <div class="tb-cell"><span class="tb-k">Sheet</span><span class="tb-v">1 of 3</span></div>
+      <div class="tb-cell tb-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:knoutt@my.yorku.ca">Email</a>
+      </div>
+    </div>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+  <button class="lightbox-close mono" type="button" aria-label="Close preview">Close &times;</button>
+  <img src="" alt="">
+</div>
 </body>
 </html>
-
-
-
