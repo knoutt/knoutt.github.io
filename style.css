@@ -494,7 +494,7 @@ body.home #contact::after{
 }
 .contact-flight{
   position:relative;
-  padding: 80px 0 140px;
+  padding: 96px 0 150px;
   margin-top: 12px;
 }
 .contact-flight-card{
@@ -528,11 +528,11 @@ body.home #contact::after{
 
 .hero-plane-img{
   position: absolute;
-  top: 24px;
-  /* Aligns plane tail (39.2/150 = 26.1% from img left) with path end (viewBox x=1055/1200 = 87.92%) across all viewports */
-  right: calc(12.083% - 81px);
-  width: 110px;
+  top: 0;
+  left: 0;
+  width: 96px;
   height: auto;
+  transform-origin: 26.13% 92.7%;
   z-index: 4;
   pointer-events: none;
   filter: drop-shadow(0 8px 10px rgba(8, 40, 52, .22));

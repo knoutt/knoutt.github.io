@@ -240,17 +240,22 @@
     <div class="container">
       <h2 class="section-title" id="contact-title">Contact</h2>
       <div class="contact-flight">
-        <svg class="flight-trail flight-trail-back" viewBox="0 0 1200 280" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M 320 50 C 480 150, 600 240, 720 230"/>
+        <svg class="flight-trail flight-trail-back" aria-hidden="true">
+          <path class="flight-path"/>
         </svg>
         <div class="glass liquid content contact-flight-card">
           <p class="lead max-65ch">Interested in collaborating or have questions? I'm always happy to chat.</p>
           <p><a class="btn" href="contact.html">Let&rsquo;s chat</a></p>
           <img class="hero-plane-mobile" src="assets/plane.svg" alt="" aria-hidden="true">
         </div>
-        <svg class="flight-trail flight-trail-front" viewBox="0 0 1200 280" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M -250 -20 C -50 0, 252 8, 320 50"/>
-          <path d="M 720 230 C 920 240, 1010 80, 1055 67"/>
+        <svg class="flight-trail flight-trail-front" aria-hidden="true">
+          <defs>
+            <mask id="flight-front-mask" maskUnits="userSpaceOnUse">
+              <rect class="flight-mask-all" fill="#fff"/>
+              <rect class="flight-mask-card" fill="#000"/>
+            </mask>
+          </defs>
+          <path class="flight-path" mask="url(#flight-front-mask)"/>
         </svg>
         <img class="hero-plane-img" src="assets/plane.svg" alt="" aria-hidden="true">
         <img class="ground-debris" src="assets/debris.png" alt="" aria-hidden="true">
