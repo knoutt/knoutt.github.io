@@ -4,115 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact · Thomas Knout</title>
-<meta name="description" content="Contact Thomas Knout. Scroll to fly a paper airplane to the email address.">
+<meta name="description" content="Contact Thomas Knout, mechanical engineering student in Toronto.">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
-<link rel="preload" as="video" href="assets/paper-airplane.mp4" type="video/mp4">
 </head>
 <body class="contact">
-<a class="skip" href="mailto:knoutt@my.yorku.ca">Skip to email: knoutt@my.yorku.ca</a>
-<div class="top-wrap">
-  <header class="page top">
-    <a class="name" href="index.html"><img src="assets/tk-64.webp" srcset="assets/tk-64.webp 1x, assets/tk-128.webp 2x" alt="" width="28" height="28">Thomas Knout</a>
-    <nav aria-label="Primary">
-      <a href="projects.html">Projects</a>
-      <a href="index.html#experience">Experience</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-    </nav>
-  </header>
-</div>
+<a class="skip" href="#main">Skip to content</a>
 
-<main id="main">
-  <h1 class="sr-only">Contact Thomas Knout</h1>
+<header class="page top">
+  <a class="name" href="index.html"><img src="assets/tk-64.webp" srcset="assets/tk-64.webp 1x, assets/tk-128.webp 2x" alt="" width="28" height="28">Thomas Knout</a>
+  <nav aria-label="Primary">
+    <a href="projects.html">Projects</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+  </nav>
+</header>
 
-  <section class="contact-experience" aria-label="Paper airplane flight to contact details">
-    <div class="contact-stage">
-      <video class="contact-video"
-             muted playsinline preload="auto"
-             poster="assets/paper-airplane-poster.webp"
-             aria-label="First-person view from a paper airplane">
-        <source src="assets/paper-airplane.mp4" type="video/mp4">
-      </video>
-      <div class="contact-scrim" aria-hidden="true"></div>
-
-      <div class="contact-stages" aria-hidden="true">
-        <div class="contact-stage-text" data-stage-text data-stage-from="0.00" data-stage-to="0.36">
-          <p class="stage-eyebrow"><em>Hand-folded</em></p>
-          <p class="stage-title">Send a paper plane.</p>
-        </div>
-        <div class="contact-stage-text" data-stage-text data-stage-from="0.40" data-stage-to="0.68">
-          <p class="stage-eyebrow"><em>Still aloft</em></p>
-          <p class="stage-title">Folded thought, in transit.</p>
-        </div>
-      </div>
-
-      <aside class="contact-card" data-stage-card data-stage-from="0.72" aria-label="Contact details">
-        <div class="card-stripe" aria-hidden="true"></div>
-
-        <div class="card-head">
-          <div class="card-flight">
-            <svg viewBox="0 0 24 24" class="card-plane-mini" aria-hidden="true"><path d="M22 12 L2 4 L5 12 L2 20 Z" fill="currentColor"/></svg>
-            <span>TK &middot; 2026</span>
-          </div>
-          <span class="card-pass-tag">Boarding pass</span>
-        </div>
-
-        <div class="card-route">
-          <div class="route-end">
-            <span class="route-code">YOU</span>
-            <span class="route-label">From</span>
-          </div>
-          <div class="route-line" aria-hidden="true">
-            <span class="route-dot"></span>
-            <span class="route-path"></span>
-            <svg class="route-plane" viewBox="0 0 24 24"><path d="M22 12 L2 4 L5 12 L2 20 Z" fill="currentColor"/></svg>
-            <span class="route-dot route-dot-end"></span>
-          </div>
-          <div class="route-end">
-            <span class="route-code">TKN</span>
-            <span class="route-label">To</span>
-          </div>
-        </div>
-
-        <a class="contact-card-cta" href="mailto:knoutt@my.yorku.ca" data-stamp-trigger>
-          <span class="cta-meta">
-            <span class="cta-eyebrow">Send a message</span>
-            <span class="cta-address">knoutt@my.yorku.ca</span>
-          </span>
-          <span class="cta-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-        </a>
-
-        <div class="card-foot">
-          <div class="card-meta">
-            <span class="card-meta-label">Passenger</span>
-            <span class="card-meta-value">Thomas Knout</span>
-          </div>
-          <div class="card-meta card-meta-right">
-            <span class="card-meta-label">Class</span>
-            <span class="card-meta-value">Mechanical Eng.</span>
-          </div>
-        </div>
-
-        <div class="card-stamp" data-card-stamp aria-hidden="true">
-          <span class="stamp-ring"></span>
-          <span class="stamp-main">Posted</span>
-          <span class="stamp-sub">via airmail</span>
-        </div>
-      </aside>
-
-      <div class="contact-hint" data-stage-hint aria-hidden="true">
-        <span class="hint-label">Toss it</span>
-        <svg class="hint-plane" viewBox="0 0 32 32" aria-hidden="true"><path d="M30 16 L4 6 L7 16 L4 26 Z" fill="currentColor"/></svg>
-      </div>
-    </div>
-    <div class="contact-scroll-spacer" aria-hidden="true"></div>
-  </section>
+<main id="main" class="page contact-page">
+  <h1>Contact</h1>
+  <p class="lead text">Email is the best way to reach me. I'm open to co-op roles, projects, and questions about anything on this site.</p>
+  <p class="email"><a href="mailto:knoutt@my.yorku.ca">knoutt@my.yorku.ca</a></p>
+  <p class="muted">Based in Toronto, Canada.</p>
 </main>
+
+<footer class="page foot">
+  <span>&copy; <span data-year>2026</span> Thomas Knout</span>
+  <a href="mailto:knoutt@my.yorku.ca">knoutt@my.yorku.ca</a>
+</footer>
 </body>
 </html>
