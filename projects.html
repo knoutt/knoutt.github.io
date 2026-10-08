@@ -3,265 +3,175 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Projects — Thomas Knout</title>
-<meta name="description" content="Project sheets by Thomas Knout: desktop flight radar, PC volume mixer, synchronized photo display, FieldMesh and more.">
+<title>Projects · Thomas Knout</title>
+<meta name="description" content="Projects by Thomas Knout: app volume mixer, desktop flight radar, three-screen photo display, FieldMesh, and PC case and GPU covers.">
+<meta property="og:title" content="Projects · Thomas Knout">
+<meta property="og:image" content="assets/mixer-render.webp">
+<link rel="icon" href="assets/TK.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="style.css">
-<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js" defer></script>
 <script src="script.js" defer></script>
 </head>
 <body class="projects">
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="site-head">
-  <div class="wrap head-row">
-    <a class="brand" href="index.html" aria-label="Thomas Knout, home">
-      <img class="brand-mark" src="assets/TK.svg" alt="" aria-hidden="true">
-      <span class="brand-name">Thomas Knout</span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Primary">
-      <a href="index.html#work"><span class="nav-no">01</span>Work</a>
-      <a href="index.html#about"><span class="nav-no">02</span>About</a>
-      <a href="index.html#experience"><span class="nav-no">03</span>Experience</a>
-      <a href="contact.html"><span class="nav-no">04</span>Contact</a>
-    </nav>
-    <div class="head-clock mono" aria-label="Local time in Toronto"><span>YYZ</span> <time data-clock>--:--</time></div>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
-      <span></span><span></span>
-    </button>
-  </div>
+<header class="page top">
+  <a class="name" href="index.html"><img src="assets/TK.svg" alt="" width="28" height="28">Thomas Knout</a>
+  <nav aria-label="Primary">
+    <a href="projects.html" aria-current="page">Projects</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
 <main id="main">
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="wrap">
-      <p class="eyebrow mono">Project sheets &middot; TK-01 to TK-05</p>
-      <h1 class="page-title" id="page-title">Everything I've built, documented.</h1>
-
-      <table class="index-table">
-        <caption class="sr-only">Project index</caption>
-        <thead class="mono">
-          <tr><th scope="col">No.</th><th scope="col">Project</th><th scope="col" class="col-kind">Discipline</th><th scope="col"><span class="sr-only">Link</span></th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="mono">TK-05</td><td><a href="#flight-radar">Desktop Flight Radar</a></td><td class="mono col-kind">Embedded &middot; Enclosure &middot; Data</td><td class="mono col-go"><a href="#flight-radar" aria-hidden="true" tabindex="-1">&darr;</a></td></tr>
-          <tr><td class="mono">TK-04</td><td><a href="#volume-mixer">PC Volume Mixer</a></td><td class="mono col-kind">Hardware &middot; Firmware &middot; App</td><td class="mono col-go"><a href="#volume-mixer" aria-hidden="true" tabindex="-1">&darr;</a></td></tr>
-          <tr><td class="mono">TK-03</td><td><a href="#sync-display">Synchronized Three-Screen Photo Display</a></td><td class="mono col-kind">ESP32 &middot; ESP-NOW</td><td class="mono col-go"><a href="#sync-display" aria-hidden="true" tabindex="-1">&darr;</a></td></tr>
-          <tr><td class="mono">TK-02</td><td><a href="#fieldmesh">FieldMesh Rapid-Deploy Mesh Hub</a></td><td class="mono col-kind">LoRa &middot; Raspberry Pi</td><td class="mono col-go"><a href="#fieldmesh" aria-hidden="true" tabindex="-1">&darr;</a></td></tr>
-          <tr><td class="mono">TK-01</td><td><a href="#lian-li">O11 Vision Grommet Cover &amp; RTX 5090 Shroud</a></td><td class="mono col-kind">Reverse engineering</td><td class="mono col-go"><a href="#lian-li" aria-hidden="true" tabindex="-1">&darr;</a></td></tr>
-        </tbody>
-      </table>
-    </div>
+  <section class="page intro">
+    <h1>Projects</h1>
+    <p class="lead">Everything I've built so far, newest first.</p>
+    <ul class="index" aria-label="Jump to a project">
+      <li><a href="#mixer">App Volume Mixer</a></li>
+      <li><a href="#radar">Desktop Flight Radar</a></li>
+      <li><a href="#sync-display">Three-screen photo display</a></li>
+      <li><a href="#fieldmesh">FieldMesh</a></li>
+      <li><a href="#lian-li">PC case and GPU covers</a></li>
+    </ul>
   </section>
 
-  <article class="sheet" id="flight-radar" aria-labelledby="s5-title">
-    <div class="wrap">
-      <header class="sheet-head">
-        <span class="part-no mono">TK-05</span>
-        <h2 class="sheet-title" id="s5-title">Desktop Flight Radar</h2>
-        <span class="sheet-kind mono">Embedded &middot; Enclosure &middot; Data</span>
-      </header>
-      <div class="sheet-grid">
-        <div class="sheet-copy">
-          <p class="feature-lede">A palm-sized instrument that lives under my monitor and shows every aircraft over Toronto in real time.</p>
-          <p>
-            The round touchscreen draws a city basemap with live traffic, each plane tagged with its callsign,
-            type and altitude, plus the local temperature up top. Tap an aircraft and it opens a detail card with a
-            photo of that exact airframe, the airline, route, altitude, ground speed, distance from my desk,
-            track, bearing and climb rate.
-          </p>
-          <p class="tbd-block">
-            <span class="tbd">To add:</span> how the data is fetched, the board and display, what was hard
-            (map rendering? memory? touch?), and any numbers worth bragging about.
-          </p>
-          <dl class="spec">
-            <div><dt>Display</dt><dd>Round touchscreen <span class="tbd">size?</span></dd></div>
-            <div><dt>Controller</dt><dd><span class="tbd">MCU / board?</span></dd></div>
-            <div><dt>Data</dt><dd>Live ADS-B traffic <span class="tbd">source?</span>, photos via planespotters.net</dd></div>
-            <div><dt>Enclosure</dt><dd>3D-printed body, screw-down bezel, angled stand</dd></div>
-            <div><dt>Power</dt><dd>USB</dd></div>
-          </dl>
+  <article class="page project" id="mixer" aria-labelledby="mixer-title">
+    <figure class="shot">
+      <img src="assets/mixer-render.webp" width="2000" height="1350" alt="Render of the app volume mixer with a four-channel screen, three keys and four dice-capped faders.">
+    </figure>
+    <div class="about-project">
+      <div>
+        <h2 id="mixer-title">App Volume Mixer</h2>
+        <p class="kind">Enclosure, PCB, firmware and a Windows app</p>
+      </div>
+      <div class="text">
+        <p>Windows lets you set a separate volume for every app, but only by digging through a menu. This puts it on four physical faders. Each fader is assigned to one program, and the screen above shows every channel's level in that program's colour. The LED by each fader matches.</p>
+        <p>BANK&minus; and BANK+ page through more apps when four isn't enough. A companion app on the PC decides which program goes on which fader and talks to the mixer over USB-C.</p>
+        <p>The fader caps are dice, so the pips tell you which channel is which.</p>
+      </div>
+    </div>
+    <div class="pair">
+      <button class="zoom" type="button" data-full="assets/mixer-keys.webp" aria-label="Enlarge: the three keys"><img src="assets/mixer-keys.webp" width="1800" height="1100" loading="lazy" alt="Close-up render of the three keys."></button>
+      <button class="zoom" type="button" data-full="assets/mixer-faders.webp" aria-label="Enlarge: the dice fader caps"><img src="assets/mixer-faders.webp" width="1800" height="1100" loading="lazy" alt="Close-up render of the dice fader caps and a green channel LED."></button>
+    </div>
+    <div class="board">
+      <button class="zoom" type="button" data-full="assets/mixer-pcb.webp" aria-label="Enlarge: the circuit board"><img src="assets/mixer-pcb.webp" width="2000" height="1467" loading="lazy" alt="3D view of the rev A circuit board with four slide potentiometers, three switches and a USB-C port."></button>
+      <div class="board-notes">
+        <h3>The board, rev A</h3>
+        <ul>
+          <li>Four slide potentiometers, one per channel</li>
+          <li>Three mechanical switches: BANK&minus;, SEL, BANK+</li>
+          <li>Header for the SPI display</li>
+          <li>UART header</li>
+          <li>USB-C to the PC</li>
+        </ul>
+      </div>
+    </div>
+    <h3 class="subhead">As built</h3>
+    <div class="pair">
+      <button class="zoom tile" type="button" data-full="assets/mixer-angle.webp" aria-label="Enlarge: the printed mixer, angled"><img src="assets/mixer-angle.webp" width="663" height="577" loading="lazy" alt="The printed and assembled mixer."></button>
+      <button class="zoom tile" type="button" data-full="assets/mixer-front.webp" aria-label="Enlarge: the printed mixer, from above"><img src="assets/mixer-front.webp" width="460" height="519" loading="lazy" alt="The assembled mixer from above."></button>
+    </div>
+  </article>
+
+  <article class="project sky" id="radar" aria-labelledby="radar-title">
+    <div class="page">
+      <div class="radar-lead">
+        <figure class="shot">
+          <img src="assets/radar-colorways.webp" width="1080" height="1350" loading="lazy" alt="Three printed flight radar units in blue, tan and black on angled stands.">
+        </figure>
+        <div class="about-project">
+          <h2 id="radar-title">Desktop Flight Radar</h2>
+          <p class="kind">Round touchscreen, live aircraft data, printed enclosure</p>
+          <div class="text">
+            <p>A small round screen that shows the planes over Toronto right now. One view is a city map with every aircraft labelled by callsign, type and altitude. The other is a radar scope with range rings.</p>
+            <p>Tap a plane and it pulls up a photo of that exact aircraft from planespotters.net, the airline, where it's flying from and to, its altitude, speed, heading, climb rate and how far it is from my desk.</p>
+            <p>The bezel screws on, so it can be printed in any colour.</p>
+          </div>
         </div>
-        <div class="gallery">
-          <button class="plate gallery-item" type="button" data-lightbox="assets/radar-map.webp" aria-label="Enlarge map view">
-            <img src="assets/radar-map.webp" alt="Map view with live traffic over Toronto" loading="lazy">
-          </button>
-          <button class="plate gallery-item" type="button" data-lightbox="assets/radar-detail.webp" aria-label="Enlarge aircraft detail view">
-            <img src="assets/radar-detail.webp" alt="Aircraft detail card for an Air Canada A330" loading="lazy">
-          </button>
-          <div class="render-slot mono"><span>CAD render</span><span class="render-slot-sub">pending</span></div>
-          <div class="render-slot mono"><span>CAD render</span><span class="render-slot-sub">pending</span></div>
-        </div>
+      </div>
+      <div class="pair">
+        <figure class="shot">
+          <button class="zoom tile" type="button" data-full="assets/radar-map.webp" aria-label="Enlarge: map view"><img src="assets/radar-map.webp" width="506" height="517" loading="lazy" alt="Map view with live aircraft over Toronto."></button>
+          <figcaption>Map view, live over Toronto.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button class="zoom tile" type="button" data-full="assets/radar-detail.webp" aria-label="Enlarge: aircraft detail view"><img src="assets/radar-detail.webp" width="521" height="532" loading="lazy" alt="Detail card for Air Canada 828, Toronto to Copenhagen."></button>
+          <figcaption>Air Canada 828 to Copenhagen, 13.5 nm away and climbing.</figcaption>
+        </figure>
       </div>
     </div>
   </article>
 
-  <article class="sheet" id="volume-mixer" aria-labelledby="s4-title">
-    <div class="wrap">
-      <header class="sheet-head">
-        <span class="part-no mono">TK-04</span>
-        <h2 class="sheet-title" id="s4-title">PC Volume Mixer</h2>
-        <span class="sheet-kind mono">Hardware &middot; Firmware &middot; Desktop app</span>
-      </header>
-      <div class="sheet-grid">
-        <div class="sheet-copy">
-          <p class="feature-lede">Physical faders for per-app volume, so Discord, Spotify and a game never have to fight over one slider.</p>
-          <p>
-            Four faders each control a program, and the strip display mirrors every level with the app's icon
-            and colour. The status LEDs under each fader match. Three keys page between fader banks, and a
-            companion desktop app assigns any program to any fader and talks to the mixer over USB.
-          </p>
-          <p>The fader caps are printed dice: count the pips for the channel number.</p>
-          <p class="tbd-block">
-            <span class="tbd">To add:</span> board and display, how the app finds audio sessions, the
-            companion app's stack, and design decisions on the enclosure.
-          </p>
-          <dl class="spec">
-            <div><dt>Inputs</dt><dd>4 slide faders, 3 keys, per-channel LEDs</dd></div>
-            <div><dt>Display</dt><dd>Strip touchscreen <span class="tbd">size / model?</span></dd></div>
-            <div><dt>Controller</dt><dd><span class="tbd">MCU / board?</span></dd></div>
-            <div><dt>Software</dt><dd>Windows companion app <span class="tbd">stack?</span>, USB link</dd></div>
-            <div><dt>Enclosure</dt><dd>3D-printed, sloped control deck</dd></div>
-          </dl>
-        </div>
-        <div class="gallery">
-          <button class="plate gallery-item" type="button" data-lightbox="assets/mixer-angle.webp" aria-label="Enlarge angled view">
-            <img src="assets/mixer-angle.webp" alt="Volume mixer, angled view" loading="lazy">
-          </button>
-          <button class="plate gallery-item" type="button" data-lightbox="assets/mixer-front.webp" aria-label="Enlarge top view">
-            <img src="assets/mixer-front.webp" alt="Volume mixer, top view" loading="lazy">
-          </button>
-          <div class="render-slot mono"><span>CAD render</span><span class="render-slot-sub">pending</span></div>
-          <div class="render-slot mono"><span>App screenshot</span><span class="render-slot-sub">pending</span></div>
-        </div>
+  <article class="page project rule-top" id="sync-display" aria-labelledby="sync-title">
+    <div class="about-project" style="margin-top:0">
+      <div>
+        <h2 id="sync-title">Three-screen photo display</h2>
+        <p class="kind">ESP32, SPI displays, ESP-NOW</p>
       </div>
+      <div class="text">
+        <p>Three tiny screens in a scale model, flipping through photos one after another. A Valentine's Day gift for my girlfriend.</p>
+        <p>Each screen has its own ESP32, SPI TFT and microSD card. One unit runs the slideshow and broadcasts the timing over ESP-NOW so the other two stay in step.</p>
+        <p>Most of the work was in getting it reliable: a custom image pipeline for the microcontrollers, two devices sharing one SPI bus, display orientation, colour correction, and SD cards that kept dropping out.</p>
+      </div>
+    </div>
+    <div class="pair">
+      <button class="zoom" type="button" data-full="assets/ProjSL.webp" aria-label="Enlarge image 1"><img src="assets/ProjSL.webp" width="1200" height="900" loading="lazy" alt="The scale model with three framed screens on a wall."></button>
+      <button class="zoom" type="button" data-full="assets/ProjSL2.webp" aria-label="Enlarge image 2"><img src="assets/ProjSL2.webp" width="1200" height="900" loading="lazy" alt="Photo display, second view."></button>
+      <button class="zoom" type="button" data-full="assets/ProjSL3.webp" aria-label="Enlarge image 3"><img src="assets/ProjSL3.webp" width="1200" height="900" loading="lazy" alt="Photo display, third view."></button>
+      <button class="zoom" type="button" data-full="assets/ProjSL4.webp" aria-label="Enlarge image 4"><img src="assets/ProjSL4.webp" width="1200" height="900" loading="lazy" alt="Photo display, fourth view."></button>
     </div>
   </article>
 
-  <article class="sheet" id="sync-display" aria-labelledby="s3-title">
-    <div class="wrap">
-      <header class="sheet-head">
-        <span class="part-no mono">TK-03</span>
-        <h2 class="sheet-title" id="s3-title">Synchronized Three-Screen Photo Display</h2>
-        <span class="sheet-kind mono">ESP32 &middot; ESP-NOW</span>
-      </header>
-      <div class="sheet-grid">
-        <div class="sheet-copy">
-          <p class="feature-lede">Three tiny screens in a scale model, flipping through photos in a staggered sequence. A Valentine's Day gift.</p>
-          <p>
-            Each screen is driven by its own ESP32 with an SPI TFT and microSD card. A master unit runs the
-            slideshow and broadcasts timing over ESP-NOW so the two followers stay in step.
-          </p>
-          <p>
-            Most of the work was in the details: a custom embedded image pipeline, plus chasing down SPI bus
-            sharing, display orientation, colour correction and SD card reliability.
-          </p>
-          <dl class="spec">
-            <div><dt>Nodes</dt><dd>3 &times; ESP32, 1 master + 2 followers</dd></div>
-            <div><dt>Display</dt><dd>SPI TFT, microSD storage</dd></div>
-            <div><dt>Sync</dt><dd>ESP-NOW broadcast</dd></div>
-          </dl>
-        </div>
-        <div class="gallery">
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjSL.png" aria-label="Enlarge image 1"><img src="assets/ProjSL.png" alt="Scale model with three synchronized screens" loading="lazy"></button>
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjSL2.png" aria-label="Enlarge image 2"><img src="assets/ProjSL2.png" alt="Photo display detail 2" loading="lazy"></button>
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjSL3.png" aria-label="Enlarge image 3"><img src="assets/ProjSL3.png" alt="Photo display detail 3" loading="lazy"></button>
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjSL4.png" aria-label="Enlarge image 4"><img src="assets/ProjSL4.png" alt="Photo display detail 4" loading="lazy"></button>
-        </div>
+  <article class="page project rule-top" id="fieldmesh" aria-labelledby="fm-title">
+    <div class="about-project" style="margin-top:0">
+      <div>
+        <h2 id="fm-title">FieldMesh</h2>
+        <p class="kind">LoRa mesh, Raspberry Pi, FastAPI</p>
       </div>
+      <div class="text">
+        <p>A mesh communications and sensing kit that works with no internet at all. The nodes are LilyGO T-Beams (ESP32, LoRa and GPS) running Meshtastic, and each one is both a data source and a relay.</p>
+        <p>A Raspberry Pi Zero 2 W is plugged into one T-Beam over USB and hosts a Wi-Fi dashboard that opens in any browser. One FastAPI service connects the radio to that dashboard: it cleans up incoming packets, keeps live node state in memory with optional SQLite history, and streams updates over server-sent events behind a simple local login.</p>
+        <p><a href="assets/MeshProj.pdf" target="_blank" rel="noopener">Full write-up (PDF)</a></p>
+      </div>
+    </div>
+    <div class="pair">
+      <button class="zoom" type="button" data-full="assets/ProjFM.webp" aria-label="Enlarge: hub and node"><img src="assets/ProjFM.webp" width="840" height="630" loading="lazy" alt="FieldMesh hub and a mesh node."></button>
+      <button class="zoom" type="button" data-full="assets/ProjFM2.webp" aria-label="Enlarge: hardware overview"><img src="assets/ProjFM2.webp" width="840" height="630" loading="lazy" alt="FieldMesh hardware overview."></button>
+      <button class="zoom" type="button" data-full="assets/ProjFM3.webp" aria-label="Enlarge: software architecture"><img src="assets/ProjFM3.webp" width="840" height="630" loading="lazy" alt="FieldMesh software architecture diagram."></button>
     </div>
   </article>
 
-  <article class="sheet" id="fieldmesh" aria-labelledby="s2-title">
-    <div class="wrap">
-      <header class="sheet-head">
-        <span class="part-no mono">TK-02</span>
-        <h2 class="sheet-title" id="s2-title">FieldMesh Rapid-Deploy Mesh Hub</h2>
-        <span class="sheet-kind mono">LoRa &middot; Raspberry Pi</span>
-      </header>
-      <div class="sheet-grid">
-        <div class="sheet-copy">
-          <p class="feature-lede">A self-contained mesh communications and sensing kit that works with no internet at all.</p>
-          <p>
-            Mesh nodes are LilyGO T-Beam units (ESP32, LoRa, GPS) running Meshtastic, acting as both data sources
-            and relays. A Raspberry Pi Zero 2 W hub connects to a T-Beam over USB and serves a local Wi-Fi
-            dashboard that opens in any browser.
-          </p>
-          <p>
-            One FastAPI service on the Pi bridges the radio to the dashboard: it normalizes packets, keeps live
-            node state in memory with optional SQLite history, and streams updates over SSE behind simple local auth.
-          </p>
-          <dl class="spec">
-            <div><dt>Nodes</dt><dd>LilyGO T-Beam, Meshtastic</dd></div>
-            <div><dt>Hub</dt><dd>Raspberry Pi Zero 2 W</dd></div>
-            <div><dt>Software</dt><dd>FastAPI, SSE, SQLite</dd></div>
-          </dl>
-          <a class="link-u" href="assets/MeshProj.pdf" target="_blank" rel="noopener">Read the full write-up (PDF)</a>
-        </div>
-        <div class="gallery">
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjFM.webp" aria-label="Enlarge hero image"><img src="assets/ProjFM.webp" alt="FieldMesh hub and mesh node" loading="lazy"></button>
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjFM2.webp" aria-label="Enlarge hardware overview"><img src="assets/ProjFM2.webp" alt="FieldMesh hardware overview" loading="lazy"></button>
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjFM3.webp" aria-label="Enlarge software architecture"><img src="assets/ProjFM3.webp" alt="FieldMesh software architecture" loading="lazy"></button>
-        </div>
+  <article class="page project rule-top" id="lian-li" aria-labelledby="ll-title">
+    <div class="about-project" style="margin-top:0">
+      <div>
+        <h2 id="ll-title">PC case and GPU covers</h2>
+        <p class="kind">Reverse engineering, ABS printing</p>
+      </div>
+      <div class="text">
+        <p>The Lian-Li O11 Vision Compact has a large empty space above the motherboard. I measured and modelled the stock grommet cover, then designed a sculpted replacement that fills the gap, lines up with the case's own geometry and hides the cables.</p>
+        <p>The RTX 5090 came with a loud, angular paint job and no lighting. I modelled a tight-fitting ABS shroud that covers the stock styling and has a channel for an LED strip.</p>
       </div>
     </div>
-  </article>
-
-  <article class="sheet" id="lian-li" aria-labelledby="s1-title">
-    <div class="wrap">
-      <header class="sheet-head">
-        <span class="part-no mono">TK-01</span>
-        <h2 class="sheet-title" id="s1-title">O11 Vision Grommet Cover &amp; RTX 5090 Shroud</h2>
-        <span class="sheet-kind mono">Reverse engineering</span>
-      </header>
-      <div class="sheet-grid">
-        <div class="sheet-copy">
-          <p class="feature-lede">Two printed parts that make my PC look the way I wanted, not the way it shipped.</p>
-          <p>
-            The Lian-Li O11 Vision Compact has a large empty void above the motherboard. I reverse-engineered the
-            original grommet cover and designed a sculpted replacement that fills the gap, ties into the existing
-            geometry and hides the cable runs.
-          </p>
-          <p>
-            The GPU shipped with a loud, angular paint job and no lighting. I modeled a snug ABS shroud that masks
-            the stock styling and integrates a channel for an LED strip.
-          </p>
-          <dl class="spec">
-            <div><dt>Parts</dt><dd>Grommet cover, GPU shroud</dd></div>
-            <div><dt>Material</dt><dd>ABS</dd></div>
-            <div><dt>Method</dt><dd>Reverse-engineered from stock parts</dd></div>
-          </dl>
-        </div>
-        <div class="gallery">
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjVC.webp" aria-label="Enlarge hero image"><img src="assets/ProjVC.webp" alt="Grommet cover and GPU shroud installed" loading="lazy"></button>
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjVC2.webp" aria-label="Enlarge grommet cover"><img src="assets/ProjVC2.webp" alt="Grommet cover detail" loading="lazy"></button>
-          <button class="plate plate-photo gallery-item" type="button" data-lightbox="assets/ProjVC3.webp" aria-label="Enlarge GPU shroud"><img src="assets/ProjVC3.webp" alt="GPU shroud detail" loading="lazy"></button>
-        </div>
-      </div>
+    <div class="pair">
+      <button class="zoom" type="button" data-full="assets/ProjVC.webp" aria-label="Enlarge: installed parts"><img src="assets/ProjVC.webp" width="840" height="630" loading="lazy" alt="Grommet cover and GPU shroud installed in the PC."></button>
+      <button class="zoom" type="button" data-full="assets/ProjVC2.webp" aria-label="Enlarge: grommet cover"><img src="assets/ProjVC2.webp" width="840" height="630" loading="lazy" alt="Grommet cover detail."></button>
+      <button class="zoom" type="button" data-full="assets/ProjVC3.webp" aria-label="Enlarge: GPU shroud"><img src="assets/ProjVC3.webp" width="840" height="630" loading="lazy" alt="GPU shroud detail."></button>
     </div>
   </article>
 </main>
 
-<footer class="site-foot">
-  <div class="wrap">
-    <div class="title-block mono">
-      <div class="tb-cell tb-wide"><span class="tb-k">Title</span><span class="tb-v">Project sheets</span></div>
-      <div class="tb-cell"><span class="tb-k">Drawn</span><span class="tb-v">T. Knout</span></div>
-      <div class="tb-cell"><span class="tb-k">Rev</span><span class="tb-v" data-year>2026</span></div>
-      <div class="tb-cell"><span class="tb-k">Sheet</span><span class="tb-v">2 of 3</span></div>
-      <div class="tb-cell tb-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="mailto:knoutt@my.yorku.ca">Email</a>
-      </div>
-    </div>
-  </div>
+<footer class="page foot">
+  <span>&copy; <span data-year>2026</span> Thomas Knout</span>
+  <a href="mailto:knoutt@my.yorku.ca">knoutt@my.yorku.ca</a>
 </footer>
 
-<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
-  <button class="lightbox-close mono" type="button" aria-label="Close preview">Close &times;</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+  <button class="lightbox-close" type="button">Close</button>
   <img src="" alt="">
 </div>
 </body>
