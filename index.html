@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thomas Knout</title>
-<meta name="description" content="Thomas Knout, mechanical engineering student in Toronto. Hardware projects: an app volume mixer with a custom PCB, a desktop flight radar, and more.">
+<meta name="description" content="Thomas Knout, mechanical engineering student in Toronto. Hardware projects: Trackside, a desk volume mixer with a custom PCB, a desktop flight radar, and more.">
 <meta property="og:title" content="Thomas Knout">
 <meta property="og:description" content="Mechanical engineering student in Toronto. Hardware I design, build and use.">
 <meta property="og:image" content="assets/mixer-render.webp">
@@ -37,17 +37,18 @@
 
   <article class="page project" id="mixer" aria-labelledby="mixer-title">
     <figure class="shot">
-      <img src="assets/mixer-render.webp" width="2000" height="1350" alt="Render of the app volume mixer: a dark grey sloped enclosure with a four-channel screen showing Spotify 72, Discord 42, Game 88 and Master 30, three white keys, and four faders with dice-shaped caps.">
+      <img src="assets/mixer-render.webp" width="2000" height="1350" alt="Render of Trackside: a dark grey sloped enclosure with a four-channel screen showing Spotify 72, Discord 42, Game 88 and Master 30, three white keys, and four faders with dice-shaped caps.">
     </figure>
 
     <div class="about-project">
       <div>
-        <h2 id="mixer-title">App Volume Mixer</h2>
-        <p class="kind">Enclosure, PCB, firmware and a Windows app</p>
+        <h2 id="mixer-title">Trackside</h2>
+        <p class="kind">A desk mixer for per-app volume</p>
       </div>
       <div class="text">
-        <p>Windows lets you set a separate volume for every app, but only by digging through a menu. This puts it on four physical faders. Each fader is assigned to one program, and the screen above shows every channel's level in that program's colour. The LED by each fader matches.</p>
-        <p>BANK&minus; and BANK+ page through more apps when four isn't enough. The fader caps are dice, so the pips tell you which channel is which.</p>
+        <p>A USB desk mixer that gives Windows programs physical faders. Four 60&nbsp;mm faders, three keys and a 2.79" bar display sit beside the keyboard. Each fader controls one program (Discord, Spotify, a game, whatever's in front) or the master volume, and one key press switches the faders to another bank of programs.</p>
+        <p>Custom PCB, firmware and a desktop app, with about 3,800 automated tests behind them. The fader caps are dice, so the pips tell you which channel is which.</p>
+        <p><a href="projects.html#mixer">How it's built</a></p>
       </div>
     </div>
 
@@ -62,16 +63,16 @@
 
     <div class="board">
       <button class="zoom" type="button" data-full="assets/mixer-pcb.webp" aria-label="Enlarge: the circuit board">
-        <img src="assets/mixer-pcb.webp" width="2000" height="1467" loading="lazy" alt="3D view of the mixer's circuit board, rev A: four slide potentiometers, three red mechanical switches labelled BANK minus, SEL and BANK plus, a display header and a USB-C port.">
+        <img src="assets/mixer-pcb.webp" width="2000" height="1467" loading="lazy" alt="3D view of Trackside's circuit board, rev A, designed in KiCad: four 60 mm faders, three hot-swap keys labelled BANK minus, SEL and BANK plus, and a USB-C port.">
       </button>
       <div class="board-notes">
-        <h3>The board, rev A</h3>
+        <h3>Hardware</h3>
         <ul>
-          <li>Four slide potentiometers, one per channel</li>
-          <li>Three mechanical switches: BANK&minus;, SEL, BANK+</li>
-          <li>Header for the SPI display</li>
-          <li>UART header</li>
-          <li>USB-C to the PC</li>
+          <li>Custom PCB designed in KiCad, assembled by JLCPCB</li>
+          <li>ESP32-S3</li>
+          <li>16-bit ADC for the faders</li>
+          <li>Low-profile hot-swap keys</li>
+          <li>Addressable RGB lighting</li>
         </ul>
       </div>
     </div>

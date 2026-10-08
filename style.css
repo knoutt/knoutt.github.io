@@ -102,6 +102,18 @@ p{ margin: 0 0 1em }
 .board-notes li{ margin-bottom: 4px }
 .subhead{ font-size: 1.1rem; margin: clamp(40px, 6vw, 72px) 0 14px }
 
+.details{ margin: clamp(40px, 6vw, 72px) 0 0; border-top: 1px solid var(--line) }
+.details > div{
+  display:grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 6px clamp(24px, 5vw, 72px);
+  padding-block: 16px; border-bottom: 1px solid var(--line);
+}
+.details dt{ font-weight: 600 }
+.details dd{ margin:0; color: var(--muted); max-width: var(--measure) }
+.details ul{ margin:0; padding-left: 1.1em }
+.details li + li{ margin-top: 4px }
+@media (max-width: 820px){ .details > div{ grid-template-columns: 1fr } }
+
 /* the radar sits on the same sky as its photo */
 .project.sky{
   background: linear-gradient(180deg, var(--sky) 0%, #fff 78%, var(--bg) 100%);

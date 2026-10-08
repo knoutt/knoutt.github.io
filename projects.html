@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects · Thomas Knout</title>
-<meta name="description" content="Projects by Thomas Knout: app volume mixer, desktop flight radar, three-screen photo display, FieldMesh, and PC case and GPU covers.">
+<meta name="description" content="Projects by Thomas Knout: Trackside desk mixer, desktop flight radar, three-screen photo display, FieldMesh, and PC case and GPU covers.">
 <meta property="og:title" content="Projects · Thomas Knout">
 <meta property="og:image" content="assets/mixer-render.webp">
 <link rel="icon" href="assets/TK.svg" type="image/svg+xml">
@@ -31,7 +31,7 @@
     <h1>Projects</h1>
     <p class="lead">Everything I've built so far, newest first.</p>
     <ul class="index" aria-label="Jump to a project">
-      <li><a href="#mixer">App Volume Mixer</a></li>
+      <li><a href="#mixer">Trackside</a></li>
       <li><a href="#radar">Desktop Flight Radar</a></li>
       <li><a href="#sync-display">Three-screen photo display</a></li>
       <li><a href="#fieldmesh">FieldMesh</a></li>
@@ -41,16 +41,15 @@
 
   <article class="page project" id="mixer" aria-labelledby="mixer-title">
     <figure class="shot">
-      <img src="assets/mixer-render.webp" width="2000" height="1350" alt="Render of the app volume mixer with a four-channel screen, three keys and four dice-capped faders.">
+      <img src="assets/mixer-render.webp" width="2000" height="1350" alt="Render of Trackside with a four-channel screen, three keys and four dice-capped faders.">
     </figure>
     <div class="about-project">
       <div>
-        <h2 id="mixer-title">App Volume Mixer</h2>
-        <p class="kind">Enclosure, PCB, firmware and a Windows app</p>
+        <h2 id="mixer-title">Trackside</h2>
+        <p class="kind">A desk mixer for per-app volume</p>
       </div>
       <div class="text">
-        <p>Windows lets you set a separate volume for every app, but only by digging through a menu. This puts it on four physical faders. Each fader is assigned to one program, and the screen above shows every channel's level in that program's colour. The LED by each fader matches.</p>
-        <p>BANK&minus; and BANK+ page through more apps when four isn't enough. A companion app on the PC decides which program goes on which fader and talks to the mixer over USB-C.</p>
+        <p>Trackside is a USB desk mixer that gives Windows programs physical faders. Four 60&nbsp;mm faders, three keys and a 2.79" bar display sit beside the keyboard. Each fader controls one program (Discord, Spotify, a game, the program in front) or the master volume. Banks switch the faders between sets of programs with one key.</p>
         <p>The fader caps are dice, so the pips tell you which channel is which.</p>
       </div>
     </div>
@@ -59,18 +58,33 @@
       <button class="zoom" type="button" data-full="assets/mixer-faders.webp" aria-label="Enlarge: the dice fader caps"><img src="assets/mixer-faders.webp" width="1800" height="1100" loading="lazy" alt="Close-up render of the dice fader caps and a green channel LED."></button>
     </div>
     <div class="board">
-      <button class="zoom" type="button" data-full="assets/mixer-pcb.webp" aria-label="Enlarge: the circuit board"><img src="assets/mixer-pcb.webp" width="2000" height="1467" loading="lazy" alt="3D view of the rev A circuit board with four slide potentiometers, three switches and a USB-C port."></button>
+      <button class="zoom" type="button" data-full="assets/mixer-pcb.webp" aria-label="Enlarge: the circuit board"><img src="assets/mixer-pcb.webp" width="2000" height="1467" loading="lazy" alt="3D view of the rev A circuit board, designed in KiCad, with four 60 mm faders, three hot-swap keys and a USB-C port."></button>
       <div class="board-notes">
-        <h3>The board, rev A</h3>
+        <h3>Hardware</h3>
         <ul>
-          <li>Four slide potentiometers, one per channel</li>
-          <li>Three mechanical switches: BANK&minus;, SEL, BANK+</li>
-          <li>Header for the SPI display</li>
-          <li>UART header</li>
-          <li>USB-C to the PC</li>
+          <li>Custom PCB designed in KiCad, assembled by JLCPCB</li>
+          <li>ESP32-S3</li>
+          <li>16-bit ADC for the faders</li>
+          <li>Low-profile hot-swap keys</li>
+          <li>Addressable RGB lighting</li>
         </ul>
       </div>
     </div>
+    <dl class="details">
+      <div><dt>Enclosure</dt><dd>Modelled parametrically in Fusion 360 and 3D printed.</dd></div>
+      <div><dt>Firmware</dt><dd>Tile-based screen rendering with cross-fades and a startup animation, a custom LED driver, a fader calibration wizard, and an app icon and colour for each fader on the display. Everything talks to the PC over a line-based USB protocol.</dd></div>
+      <div><dt>Desktop app</dt><dd>
+        <ul>
+          <li>A pixel-exact mirror of the device's screen, checked against the firmware's own drawing code compiled for desktop.</li>
+          <li>A large view one click away to pin programs, adjust brightness and look up what each key does.</li>
+          <li>A settings window for banks, keys and the device.</li>
+          <li>Changes edit the settings file in place and keep the user's comments.</li>
+        </ul>
+      </dd></div>
+      <div><dt>In progress</dt><dd>A media mode that turns the screen into a now-playing display with album art, and colour themes for the device.</dd></div>
+      <div><dt>Process</dt><dd>Every screen was mocked up and approved before it was built. About 3,800 automated tests cover the app, protocol and rendering.</dd></div>
+      <div><dt>Built with</dt><dd>KiCad, Fusion 360, ESP32-S3 (PlatformIO), Python (Tk, Pillow, pycaw, pywinrt)</dd></div>
+    </dl>
     <h3 class="subhead">As built</h3>
     <div class="pair">
       <button class="zoom tile" type="button" data-full="assets/mixer-angle.webp" aria-label="Enlarge: the printed mixer, angled"><img src="assets/mixer-angle.webp" width="663" height="577" loading="lazy" alt="The printed and assembled mixer."></button>
