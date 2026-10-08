@@ -8,7 +8,7 @@
 <meta property="og:title" content="Thomas Knout">
 <meta property="og:description" content="Mechanical engineering student in Toronto. Hardware I design, build and use.">
 <meta property="og:image" content="assets/mixer-render.webp">
-<link rel="icon" href="assets/TK.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -19,7 +19,7 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="page top">
-  <a class="name" href="index.html"><img src="assets/TK.svg" alt="" width="28" height="28">Thomas Knout</a>
+  <a class="name" href="index.html"><img src="assets/tk-64.webp" srcset="assets/tk-64.webp 1x, assets/tk-128.webp 2x" alt="" width="28" height="28">Thomas Knout</a>
   <nav aria-label="Primary">
     <a href="projects.html">Projects</a>
     <a href="#experience">Experience</a>
@@ -88,37 +88,47 @@
     </div>
   </article>
 
-  <article class="project sky" id="radar" aria-labelledby="radar-title">
-    <div class="page">
-      <div class="radar-lead">
-        <figure class="shot">
-          <img src="assets/radar-colorways.webp" width="1080" height="1350" loading="lazy" alt="Three Flyover flight radars in blue, tan and black, on angled stands. The screens show a radar scope with range rings and labelled aircraft.">
-        </figure>
-        <div class="about-project">
-          <h2 id="radar-title">Flyover</h2>
-          <p class="kind">A desktop flight radar. Hardware, firmware and cloud backend, June 2026 to now.</p>
-          <div class="text">
-            <p>A palm-sized flight radar that sits on a desk and shows the real aircraft flying overhead, live. I designed and built it end to end: the enclosure, the ESP32 firmware, the backend that feeds it, and the tools that make and support it.</p>
-            <p>I've sold more than 200 units on Etsy, in four languages.</p>
-            <p><a href="projects.html#radar">More about Flyover</a></p>
-          </div>
-        </div>
+  <article class="page project rule-top" id="radar" aria-labelledby="radar-title">
+    <div class="about-project" style="margin-top:0">
+      <div>
+        <h2 id="radar-title">Flyover</h2>
+        <p class="kind">A desktop flight radar. Hardware, firmware and cloud backend, June 2026 to now.</p>
       </div>
+      <div class="text">
+        <p>A palm-sized flight radar that sits on a desk and shows the real aircraft flying overhead, live. I designed and built it end to end: the enclosure, the ESP32 firmware, the backend that feeds it, and the tools that make and support it.</p>
+        <p class="stat">200+ sold on Etsy, in four languages.</p>
+      </div>
+    </div>
 
-      <div class="pair">
-        <figure class="shot">
-          <button class="zoom tile" type="button" data-full="assets/radar-map.webp" aria-label="Enlarge: map view">
-            <img src="assets/radar-map.webp" width="506" height="517" loading="lazy" alt="The radar's map view with live aircraft over Toronto and the local temperature.">
-          </button>
-          <figcaption>Map view, live over Toronto.</figcaption>
-        </figure>
-        <figure class="shot">
-          <button class="zoom tile" type="button" data-full="assets/radar-detail.webp" aria-label="Enlarge: aircraft detail view">
-            <img src="assets/radar-detail.webp" width="521" height="532" loading="lazy" alt="Detail card for Air Canada 828, an Airbus A330, Toronto to Copenhagen at 16,325 feet and 405 knots, 13.5 nautical miles away.">
-          </button>
-          <figcaption>Air Canada 828 to Copenhagen, 13.5 nm away and climbing.</figcaption>
-        </figure>
+    <div class="demo" data-demo>
+      <div class="demo-screen">
+        <video muted playsinline preload="metadata" poster="assets/flyover-demo-poster.webp" width="720" height="1280" aria-label="Flyover demo: it boots into a radar scope, switches to a live map of Toronto, a plane is tapped, and its detail card loads with a photo of the aircraft.">
+          <source src="assets/flyover-demo-1080.mp4" type="video/mp4" media="(min-width: 1100px) and (min-resolution: 2dppx)">
+          <source src="assets/flyover-demo-720.mp4" type="video/mp4">
+        </video>
       </div>
+      <ol class="demo-steps" aria-label="Demo steps. Select one to jump the video to it.">
+        <li><button class="step" type="button" data-start="0" data-end="5"><span class="step-title">A radar for your street</span><span class="step-text">It boots straight into a radar scope with every aircraft near home plotted on it.</span></button></li>
+        <li><button class="step" type="button" data-start="5" data-end="10.5"><span class="step-title">Over a live map</span><span class="step-text">Underneath is a map of the area. Each plane is labelled with its callsign, type and altitude, and the local weather sits on top.</span></button></li>
+        <li><button class="step" type="button" data-start="10.5" data-end="19"><span class="step-title">Tap a plane</span><span class="step-text">Touch any aircraft and it looks up the airline and where the flight is going.</span></button></li>
+        <li><button class="step" type="button" data-start="19" data-end=""><span class="step-title">The actual aircraft</span><span class="step-text">Then a photo of that exact airframe, with its altitude, speed, distance and climb rate.</span></button></li>
+      </ol>
+    </div>
+    <p class="more-link"><a href="projects.html#radar">More about Flyover</a></p>
+
+    <div class="pair">
+      <figure class="shot">
+        <button class="zoom" type="button" data-full="assets/flyover-map.webp" aria-label="Enlarge: Flyover on a desk, map view">
+          <img src="assets/flyover-map.webp" width="828" height="1104" loading="lazy" alt="Flyover on a white desk against a brick wall, showing a map of Toronto with labelled aircraft and 11 degrees on top.">
+        </button>
+        <figcaption>Live traffic over Toronto, with the airports marked.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button class="zoom" type="button" data-full="assets/flyover-detail.webp" aria-label="Enlarge: Flyover showing an aircraft's details">
+          <img src="assets/flyover-detail.webp" width="828" height="1104" loading="lazy" alt="Flyover showing Air Canada 1126, an Airbus A220-300 from Saskatoon to Toronto, at 2,100 feet and 161 knots, 7.8 nautical miles away.">
+        </button>
+        <figcaption>An A220 from Saskatoon, 7.8 nm out and descending into Toronto.</figcaption>
+      </figure>
     </div>
   </article>
 
@@ -199,7 +209,7 @@
           <path class="flight-path" mask="url(#flight-front-mask)"/>
         </svg>
         <img class="hero-plane-img" src="assets/plane.svg" alt="" aria-hidden="true">
-        <img class="ground-debris" src="assets/debris.png" alt="" aria-hidden="true">
+        <img class="ground-debris" src="assets/debris.webp" alt="" aria-hidden="true">
       </div>
     </div>
   </section>

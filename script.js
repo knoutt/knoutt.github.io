@@ -254,3 +254,85 @@
   else window.addEventListener('resize', layout, { passive: true });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 })();
+
+(function () {
+  const demos = document.querySelectorAll('[data-demo]');
+  if (!demos.length) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wide = window.matchMedia('(min-width: 821px)');
+
+  demos.forEach(demo => {
+    const video = demo.querySelector('video');
+    const steps = Array.from(demo.querySelectorAll('[data-start]'));
+    let current = -1;
+    let inView = false;
+    let raf = null;
+
+    const range = i => {
+      const s = parseFloat(steps[i].dataset.start) || 0;
+      const e = parseFloat(steps[i].dataset.end);
+      return { s, e: Number.isFinite(e) ? e : (video.duration || s + 8) };
+    };
+
+    const seek = t => { try { video.currentTime = t; } catch (e) {} };
+
+    const play = () => {
+      if (reduced || !inView) return;
+      const p = video.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+
+    const setStep = (i, jump) => {
+      if (i !== current) {
+        steps.forEach((b, j) => {
+          if (j === i) b.setAttribute('aria-current', 'step');
+          else b.removeAttribute('aria-current');
+          b.style.setProperty('--p', 0);
+        });
+        current = i;
+      }
+      if (jump) seek(range(i).s);
+      play();
+    };
+
+    const tick = () => {
+      raf = null;
+      if (current < 0) return;
+      const { s, e } = range(current);
+      const t = video.currentTime;
+      if (t >= e - 0.04) {
+        if (wide.matches) seek(s);
+        else setStep((current + 1) % steps.length, true);
+      } else {
+        steps[current].style.setProperty('--p', Math.max(0, Math.min(1, (t - s) / (e - s))).toFixed(3));
+      }
+      if (!video.paused) raf = requestAnimationFrame(tick);
+    };
+
+    video.addEventListener('play', () => { if (!raf) raf = requestAnimationFrame(tick); });
+    video.addEventListener('ended', () => {
+      if (wide.matches) setStep(current, true);
+      else setStep(0, true);
+    });
+
+    steps.forEach((b, i) => b.addEventListener('click', () => setStep(i, true)));
+
+    if (reduced) video.controls = true;
+
+    new IntersectionObserver(entries => {
+      inView = entries[0].isIntersecting;
+      if (inView) { if (current < 0) setStep(0, false); else play(); }
+      else video.pause();
+    }, { threshold: 0.2 }).observe(video);
+
+    const stepIO = new IntersectionObserver(entries => {
+      if (!wide.matches) return;
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const i = steps.indexOf(entry.target);
+        if (i !== current) setStep(i, true);
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    steps.forEach(b => stepIO.observe(b));
+  });
+})();
