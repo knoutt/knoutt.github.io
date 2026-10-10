@@ -101,6 +101,8 @@ p{ margin: 0 0 1em }
 .board-notes ul{ margin: 0; padding-left: 1.1em; color: var(--muted) }
 .board-notes li{ margin-bottom: 4px }
 .subhead{ font-size: 1.1rem; margin: clamp(40px, 6vw, 72px) 0 14px }
+.trio{ display:grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.6vw, 18px) }
+@media (max-width: 640px){ .trio{ grid-template-columns: 1fr } }
 
 .details{ margin: clamp(40px, 6vw, 72px) 0 0; border-top: 1px solid var(--line) }
 .details > div{
